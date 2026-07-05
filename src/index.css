@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Claude.ai-inspired warm palette */
+  --color-cream: #FAF9F5;
+  --color-cream-dim: #F4F1EA;
+  --color-card: #FFFFFF;
+  --color-ink: #262624;
+  --color-ink-soft: #55534D;
+  --color-ink-faint: #83807A;
+  --color-border: #E6E2D8;
+  --color-border-soft: #EFEBE1;
+  --color-clay: #C15F3C;
+  --color-clay-dark: #A84C2C;
+  --color-clay-tint: #F3E3D9;
+  --color-sage: #6B7A5E;
+  --color-gold: #B08D3F;
+  --color-gold-soft: #D4B876;
+  --color-gold-tint: #F6EFDD;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+}
+
+@layer utilities {
+  .paper-texture {
+    background-image: radial-gradient(circle at 1px 1px, rgba(38, 38, 36, 0.05) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  .card-surface {
+    background: var(--color-card);
+    border: 1px solid var(--color-border-soft);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+
+  .card-surface:hover {
+    border-color: var(--color-border);
+    box-shadow: 0 16px 36px -14px rgba(38, 38, 36, 0.18);
+    transform: translateY(-4px);
+  }
+
+  .clay-underline {
+    position: relative;
+  }
+
+  .clay-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: var(--color-clay);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .clay-underline:hover::after {
+    transform: scaleX(1);
+  }
+
+  .gold-accent-border {
+    border: 1px solid var(--color-gold-soft);
+    box-shadow: 0 0 0 1px rgba(176, 141, 63, 0.12), 0 8px 24px -12px rgba(176, 141, 63, 0.25);
+  }
+
+  .gold-text {
+    color: var(--color-gold);
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
