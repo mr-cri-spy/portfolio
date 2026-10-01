@@ -1,8 +1,6 @@
 import { motion } from "motion/react";
-import { skillsData } from "../data";
+import { skillGroups } from "../data";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
-
-const categories = Array.from(new Set(skillsData.map((s) => s.category)));
 
 export default function Skills() {
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.05, rootMargin: "0px 0px -60px 0px" });
@@ -20,37 +18,27 @@ export default function Skills() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-          {categories.map((category, catIndex) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10">
+          {skillGroups.map((group, groupIndex) => (
             <motion.div
-              key={category}
+              key={group.name}
               initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: catIndex * 0.06 }}
+              transition={{ duration: 0.5, delay: groupIndex * 0.06 }}
             >
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-[#262624] mb-5 pb-2 border-b border-[#E6E2D8]">
-                {category}
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-[#262624] mb-4 pb-2 border-b border-[#E6E2D8]">
+                {group.name}
               </h3>
-              <div className="space-y-4">
-                {skillsData
-                  .filter((s) => s.category === category)
-                  .map((skill) => (
-                    <div key={skill.name}>
-                      <div className="flex items-center justify-between mb-1.5">
-                        <span className="text-sm text-[#55534D] font-medium">{skill.name}</span>
-                        <span className="text-xs text-[#83807A] font-mono">{skill.level}%</span>
-                      </div>
-                      <div className="h-1.5 w-full bg-[#E6E2D8] rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={isVisible ? { width: `${skill.level}%` } : { width: 0 }}
-                          transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-                          className="h-full bg-[#6B7A5E] rounded-full"
-                        />
-                      </div>
-                    </div>
-                  ))}
-              </div>
+              <ul className="flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
+                  <li
+                    key={skill}
+                    className="px-3 py-1.5 text-xs font-medium bg-white text-[#55534D] border border-[#E6E2D8] rounded-full"
+                  >
+                    {skill}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>

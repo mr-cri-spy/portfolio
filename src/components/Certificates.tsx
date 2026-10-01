@@ -102,9 +102,9 @@ export default function Certificates() {
   };
 
   return (
-    <section id="certificates" className="py-24 sm:py-32 bg-[#F4F1EA]">
+    <section id="certificates" className="py-16 sm:py-20 bg-[#F4F1EA]">
       <div className="max-w-6xl mx-auto px-6">
-        <div ref={ref as any} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+        <div ref={ref as any} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
           <div className="max-w-xl">
             <span className="text-xs uppercase tracking-[0.2em] text-[#C15F3C] font-semibold">Credentials</span>
             <h2 className="text-4xl sm:text-5xl font-serif tracking-tight text-[#262624] mt-3">
@@ -126,59 +126,31 @@ export default function Certificates() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {visible.map((cert, i) => {
-            const thumb = resolveCertImage(cert.thumbUrl);
-            return (
-              <motion.button
-                key={cert.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: (i % INITIAL_COUNT) * 0.06 }}
-                whileHover={{ y: -4 }}
+        <ul className="flex flex-wrap gap-2.5">
+          {visible.map((cert, i) => (
+            <motion.li
+              key={cert.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: (i % INITIAL_COUNT) * 0.05 }}
+            >
+              <button
                 onClick={() => setSelected(cert)}
-                className="card-surface rounded-2xl overflow-hidden text-left cursor-pointer flex flex-col hover:border-[#D4B876] hover:shadow-[0_16px_36px_-14px_rgba(176,141,63,0.3)]"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#E6E2D8] text-left text-sm text-[#262624] hover:border-[#D4B876] hover:bg-[#F6EFDD] transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C15F3C]"
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-[#F4F1EA] border-b border-[#E6E2D8]">
-                  {thumb ? (
-                    <img
-                      src={thumb}
-                      alt={cert.title}
-                      loading="lazy"
-                      className={`w-full h-full object-cover object-top transition-all duration-300 ${
-                        isUnlocked ? "" : "blur-md scale-105"
-                      }`}
-                    />
-                  ) : null}
-                  {!isUnlocked && (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-1.5 bg-black/20">
-                      <div className="w-8 h-8 rounded-full bg-white/90 flex items-center justify-center">
-                        <Lock className="w-3.5 h-3.5 text-[#262624]" />
-                      </div>
-                      <span className="text-[10px] font-semibold uppercase tracking-wide text-white drop-shadow">
-                        View certificate
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <div className="p-5">
-                  <h3 className="text-sm font-semibold text-[#262624] leading-snug mb-1.5">{cert.title}</h3>
-                  <p className="text-xs text-[#83807A]">{cert.issuer}</p>
-                  <p className="text-xs text-[#83807A] mt-1 font-mono">{cert.date}</p>
-                </div>
-              </motion.button>
-            );
-          })}
+                <span className="font-medium">{cert.title}</span>
+                <span className="text-xs text-[#83807A] font-mono whitespace-nowrap">{cert.date}</span>
+              </button>
+            </motion.li>
+          ))}
 
           {filtered.length === 0 && (
-            <p className="col-span-full text-center text-sm text-[#83807A] py-12">
-              No credentials match "{query}".
-            </p>
+            <li className="text-sm text-[#83807A] py-4">No credentials match "{query}".</li>
           )}
-        </div>
+        </ul>
 
         {hasMore && (
-          <div className="flex justify-center mt-10">
+          <div className="flex mt-6">
             <button
               onClick={() => setShowAll(!showAll)}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-[#E6E2D8] text-[#262624] text-sm font-medium hover:border-[#C15F3C]/40 hover:bg-[#F3E3D9] transition-colors cursor-pointer"

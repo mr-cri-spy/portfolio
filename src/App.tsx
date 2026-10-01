@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -13,6 +13,7 @@ import Contact from "./components/Contact";
 import AskBot from "./components/AskBot";
 import { useLanguage } from "./context/LanguageContext";
 import { developerProfile } from "./data";
+import { trackSection } from "./utils/analytics";
 import {
   Menu,
   X,
@@ -35,6 +36,7 @@ export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [toasts, setToasts] = useState<{ id: string; message: string; type: "success" | "error" }[]>([]);
+  const trackedSectionRef = useRef<string>("");
 
   useEffect(() => {
     const handleToastEvent = (e: Event) => {
@@ -66,6 +68,10 @@ export default function App() {
           const height = el.offsetHeight;
           if (scrollPos >= top && scrollPos < top + height) {
             setActiveSection(section);
+            if (trackedSectionRef.current !== section) {
+              trackedSectionRef.current = section;
+              trackSection(section);
+            }
             break;
           }
         }
@@ -128,7 +134,7 @@ export default function App() {
             className="flex items-center gap-2 group text-left cursor-pointer"
           >
             <span className="text-2xl font-serif font-[800] tracking-[-0.02em] text-[#262624]">
-              Kirana.
+              Kiran.
             </span>
           </button>
 
@@ -189,7 +195,7 @@ export default function App() {
               className="fixed right-0 top-0 bottom-0 w-[280px] max-w-[85vw] h-full z-50 lg:hidden bg-[#FAF9F5] border-l border-[#E6E2D8] p-6 flex flex-col shadow-2xl overflow-y-auto"
             >
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#E6E2D8]">
-                <span className="text-xl font-serif font-[800] tracking-[-0.02em] text-[#262624]">Kirana.</span>
+                <span className="text-xl font-serif font-[800] tracking-[-0.02em] text-[#262624]">Kiran.</span>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-1.5 rounded-full bg-white border border-[#E6E2D8] text-[#55534D] cursor-pointer"

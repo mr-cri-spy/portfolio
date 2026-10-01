@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useCallback, useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Github, ExternalLink, X, Check, Lock, Send, AlertCircle, Eye } from "lucide-react";
 import { projectsData } from "../data";
@@ -6,6 +6,8 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { isValidEmail } from "../utils/validation";
 import { apiUrl } from "../utils/api";
 import type { Project } from "../types";
+import FeaturedProjectCard from "./FeaturedProjectCard";
+import CaseStudy from "./case-study/CaseStudy";
 
 const localProjectImages = import.meta.glob("../assets/images/project-*.webp", { eager: true, import: "default" }) as Record<string, string>;
 
@@ -27,6 +29,8 @@ export default function Projects() {
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.05, rootMargin: "0px 0px -60px 0px" });
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [caseStudyProject, setCaseStudyProject] = useState<Project | null>(null);
+  const closeCaseStudy = useCallback(() => setCaseStudyProject(null), []);
   const [isCodeUnlocked, setIsCodeUnlocked] = useState(() => sessionStorage.getItem(CODE_UNLOCK_KEY) === "1");
   const [showAccessForm, setShowAccessForm] = useState(false);
   const [accessForm, setAccessForm] = useState<AccessForm>(emptyAccessForm);
@@ -141,7 +145,16 @@ export default function Projects() {
 
         {/* Project grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filtered.map((project, i) => (
+          {filtered.map((project, i) =>
+            project.featured && project.caseStudy ? (
+            <FeaturedProjectCard
+              key={project.id}
+              project={project}
+              coverSrc={resolveProjectImage(project.imageUrl)}
+              isVisible={isVisible}
+              onOpenCaseStudy={() => setCaseStudyProject(project)}
+            />
+            ) : (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
@@ -187,9 +200,21 @@ export default function Projects() {
                 </div>
               </div>
             </motion.div>
-          ))}
+            )
+          )}
         </div>
       </div>
+
+      {/* Flagship project case study */}
+      <AnimatePresence>
+        {caseStudyProject && (
+          <CaseStudy
+            project={caseStudyProject}
+            coverSrc={resolveProjectImage(caseStudyProject.imageUrl)}
+            onClose={closeCaseStudy}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Project detail modal */}
       <AnimatePresence>

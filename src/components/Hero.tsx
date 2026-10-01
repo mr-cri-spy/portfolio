@@ -28,7 +28,7 @@ const headlineLine = {
 };
 
 export default function Hero({ onNavigate }: HeroProps) {
-  const tags = ["Large Language Models", "LoRA / QLoRA Fine-Tuning", "RAG & Vector Search", "Voice AI"];
+  const tags = ["LLMs from scratch", "LoRA / QLoRA Fine-Tuning", "RAG & Vector Search", "Voice AI"];
 
   const sectionRef = useRef<HTMLElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);

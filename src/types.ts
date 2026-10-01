@@ -10,12 +10,49 @@ export interface Project {
   imageUrl: string;
   category: string;
   status?: "ongoing";
+  // Flagship-project extras: a featured project spans the full grid width,
+  // shows metric chips, and opens a dedicated case study instead of the
+  // generic detail modal.
+  featured?: boolean;
+  badge?: string;
+  coverAlt?: string;
+  metrics?: string[];
+  caseStudy?: CaseStudy;
 }
 
-export interface Skill {
+export interface SpecItem {
+  label: string;
+  value: string;
+}
+
+export interface StatItem {
+  label: string;
+  value: string;
+}
+
+export interface RoadmapStep {
+  label: string;
+  state: "done" | "active" | "upcoming";
+}
+
+export interface CaseStudy {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  why: string;
+  architecture: SpecItem[];
+  tokenizer: string;
+  training: { heading: string; items: string[] };
+  engineering: { items: string[]; takeaway: string };
+  evaluation: { stats: StatItem[]; alsoMeasures: string; decoding: string };
+  experiment: { heading: string; question: string; body: string };
+  roadmap: RoadmapStep[];
+  status: string;
+}
+
+export interface SkillGroup {
   name: string;
-  level: number; // 0 - 100
-  category: string;
+  skills: string[];
 }
 
 export interface Experience {

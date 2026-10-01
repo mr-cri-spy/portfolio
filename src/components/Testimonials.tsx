@@ -1,50 +1,10 @@
 import { useState, FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Star, Quote, Check, AlertCircle, Send } from "lucide-react";
+import { Check, AlertCircle, Send } from "lucide-react";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { isValidEmail, isValidPhone } from "../utils/validation";
 import { countryCodes } from "../utils/countryCodes";
 import { apiUrl } from "../utils/api";
-
-interface Testimonial {
-  id: number;
-  name: string;
-  role: string;
-  company: string;
-  avatarText: string;
-  comment: string;
-  rating: number;
-}
-
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    name: "Saurabh Sharma",
-    role: "Lead ML Architect",
-    company: "Tulcuz AI Labs",
-    avatarText: "SS",
-    comment: "Kiran demonstrated an exceptional grasp of model adaptation parameters during his internship. His custom LoRA implementation cut down our tuning memory overhead significantly while keeping the conversational style flawlessly aligned with the target personality.",
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: "Olivia Chen",
-    role: "Technical Evaluator",
-    company: "GenAI Open Collective",
-    avatarText: "OC",
-    comment: "What impressed me most about Kiran was his understanding of vector distances, retrieval grounding (RAG), and how to prevent model drift in live production systems. He wasn't just piping prompts.",
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: "Marcus Vane",
-    role: "Director of Product Engineering",
-    company: "Helix Web Tech",
-    avatarText: "MV",
-    comment: "Kiran's work combined responsive frontend engineering with high-speed rendering pipelines. Seeing him apply that precision to real-time AI interfaces is genuinely impressive.",
-    rating: 5,
-  },
-];
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mzdlkooa";
 
@@ -125,54 +85,22 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="py-24 sm:py-32 bg-[#FAF9F5]">
       <div ref={ref as any} className="max-w-6xl mx-auto px-6">
-        <div className="mb-16 max-w-2xl">
+        <div className="mb-12 max-w-2xl">
           <span className="text-xs uppercase tracking-[0.2em] text-[#C15F3C] font-semibold">Reviews</span>
           <h2 className="text-4xl sm:text-5xl font-serif tracking-tight text-[#262624] mt-3">
-            What people say.
+            Worked together?
           </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={t.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="card-surface rounded-2xl p-7 flex flex-col"
-            >
-              <Quote className="w-6 h-6 text-[#F3E3D9] mb-4" fill="currentColor" strokeWidth={0} />
-
-              <div className="flex gap-0.5 mb-4">
-                {Array.from({ length: t.rating }).map((_, s) => (
-                  <Star key={s} className="w-3.5 h-3.5 text-[#6B7A5E]" fill="currentColor" strokeWidth={0} />
-                ))}
-              </div>
-
-              <p className="text-sm text-[#55534D] leading-relaxed flex-1 mb-6">"{t.comment}"</p>
-
-              <div className="flex items-center gap-3 pt-4 border-t border-[#E6E2D8]">
-                <div className="w-10 h-10 rounded-full bg-[#F3E3D9] text-[#C15F3C] flex items-center justify-center text-sm font-semibold">
-                  {t.avatarText}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-[#262624]">{t.name}</p>
-                  <p className="text-xs text-[#83807A]">{t.role}, {t.company}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
         </div>
 
         {/* Share your experience form */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5 }}
           className="card-surface rounded-2xl p-7 md:p-8 max-w-3xl mx-auto"
         >
           <div className="mb-6 text-center">
-            <h3 className="text-lg font-semibold text-[#262624] mb-1.5">Worked with Kiran?</h3>
+            <h3 className="text-lg font-semibold text-[#262624] mb-1.5">Share your experience</h3>
             <p className="text-sm text-[#55534D]">
               Share a few words about your experience. Your contact details stay private; only your words may be
               featured here.

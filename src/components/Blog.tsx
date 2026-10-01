@@ -13,7 +13,7 @@ interface Article {
   content: string;
 }
 
-const categories = ["All", "Fine-Tuning", "RAG Systems", "Web Graphics"];
+const categories = ["All", "Fine-Tuning", "RAG Systems"];
 
 const articles: Article[] = [
   {
@@ -54,23 +54,6 @@ Most naive RAG implementations split files strictly by character count. This bre
 2. Dense vector retrieval with FAISS
 
 By transforming chunks into high-dimensional embeddings, we index them into a FAISS database. When a user submits a query, we run a cosine similarity search across the index, retrieve the top-K most relevant chunks, and concatenate them into the model's system context. This prevents output drift and keeps answers grounded in real source material.`,
-  },
-  {
-    id: "webgl-canvas",
-    title: "60 FPS Interactive Visuals on the Web",
-    category: "Web Graphics",
-    readTime: "5 min read",
-    date: "April 2, 2026",
-    excerpt: "Optimizing responsive canvas rendering, mouse parallax, and state machines for smooth real-time UI performance.",
-    content: `Many sites suffer from lag when embedding custom canvas visuals due to garbage collection spikes and heavy CPU-bound math. Here's how to keep visual states flowing at a smooth 60 FPS.
-
-The mouse parallax state machine
-
-Attaching event listeners directly to window mouse movements triggers layout reflows, so instead, cache target mouse positions in a lightweight state ref and apply linear interpolation during the animation loop. This keeps motion feeling organic rather than jumpy.
-
-Minimizing garbage collection
-
-Never instantiate new objects inside a render loop body. Instead, pre-allocate a fixed pool of positions/particles during setup and reuse that memory continuously. This alone eliminates most frame drops caused by garbage collection pauses.`,
   },
 ];
 

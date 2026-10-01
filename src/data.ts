@@ -1,4 +1,4 @@
-import { Profile, Project, Skill, Experience, Certification } from "./types";
+import { Profile, Project, SkillGroup, Experience, Certification } from "./types";
 
 export const developerProfile: Profile = {
   name: "Kiran M",
@@ -8,71 +8,133 @@ export const developerProfile: Profile = {
   github: "https://github.com/mr-cri-spy",
   linkedin: "https://linkedin.com/in/kiran-m-36334b343",
   resumeUrl: "#",
-  bio: "AI/ML Engineer with hands-on experience across LLM fine-tuning, voice AI, RAG systems, and enterprise automation. Currently concentrating on Quantum Machine Learning (QML) and building interactive learning platforms to democratize quantum-classical neural network architectures. Comfortable working across the full stack of an AI system, including model fine-tuning, backend APIs, DevOps deployment, and testing. Passionate about building scalable, ethical, human-centered AI solutions.",
-  location: "Bengaluru, India",
-  phone: "+91-8867324156"
+  bio: "AI/ML Engineer with hands-on experience across voice AI, RAG systems, enterprise automation, and LLMs, from LoRA/QLoRA fine-tuning to pretraining a language model from scratch. Comfortable working across the full stack of an AI system, including model training, backend APIs, DevOps deployment, and testing. Passionate about building scalable, ethical, human-centered AI solutions. Also exploring Quantum Machine Learning.",
+  location: "Bengaluru, India"
 };
 
-export const skillsData: Skill[] = [
-  // Programming Languages
-  { name: "Python", level: 95, category: "Programming Languages" },
-  { name: "SQL", level: 88, category: "Programming Languages" },
-  { name: "Bash", level: 80, category: "Programming Languages" },
-
-  // AI/ML & LLMs
-  { name: "Large Language Models", level: 92, category: "AI/ML & LLMs" },
-  { name: "LLM Architectures (GPT, BERT)", level: 90, category: "AI/ML & LLMs" },
-  { name: "Transformer Blocks", level: 89, category: "AI/ML & LLMs" },
-  { name: "Attention Algorithm", level: 88, category: "AI/ML & LLMs" },
-  { name: "LLM Pretraining", level: 85, category: "AI/ML & LLMs" },
-  { name: "Prompt Engineering", level: 95, category: "AI/ML & LLMs" },
-  { name: "Fine-tuning (LoRA/QLoRA)", level: 94, category: "AI/ML & LLMs" },
-  { name: "Model Optimization", level: 88, category: "AI/ML & LLMs" },
-  { name: "Inference Optimization", level: 86, category: "AI/ML & LLMs" },
-  { name: "Conversational AI", level: 92, category: "AI/ML & LLMs" },
-  { name: "Voice AI (ASR)", level: 90, category: "AI/ML & LLMs" },
-  { name: "Multimodal AI Concepts", level: 88, category: "AI/ML & LLMs" },
-  { name: "RAG Concepts", level: 91, category: "AI/ML & LLMs" },
-  { name: "Machine Learning", level: 90, category: "AI/ML & LLMs" },
-  { name: "Deep Learning", level: 89, category: "AI/ML & LLMs" },
-  { name: "Quantum Machine Learning (QML)", level: 85, category: "AI/ML & LLMs" },
-
-  // ML Theory & Interpretability
-  { name: "Explainable AI", level: 85, category: "ML Theory & Interpretability" },
-  { name: "Mechanistic Interpretability", level: 82, category: "ML Theory & Interpretability" },
-  { name: "Principal Component Analysis (PCA)", level: 87, category: "ML Theory & Interpretability" },
-  { name: "Dimension Reduction", level: 86, category: "ML Theory & Interpretability" },
-  { name: "High-Dimensional Clustering", level: 84, category: "ML Theory & Interpretability" },
-  { name: "Advanced Cosine Similarity Applications", level: 88, category: "ML Theory & Interpretability" },
-
-  // Frameworks & Libraries
-  { name: "PyTorch", level: 90, category: "Frameworks & Libraries" },
-  { name: "TensorFlow", level: 80, category: "Frameworks & Libraries" },
-  { name: "Hugging Face Transformers", level: 92, category: "Frameworks & Libraries" },
-  { name: "Scikit-Learn", level: 85, category: "Frameworks & Libraries" },
-
-  // Chatbots & GenAI
-  { name: "Vector Search (FAISS, Qdrant basics)", level: 87, category: "Chatbots & GenAI" },
-  { name: "WhatsApp Business API", level: 89, category: "Chatbots & GenAI" },
-  { name: "Website Chatbots", level: 91, category: "Chatbots & GenAI" },
-  { name: "CRM Integration", level: 85, category: "Chatbots & GenAI" },
-
-  // Tools & Platforms
-  { name: "Git", level: 90, category: "Tools & Platforms" },
-  { name: "GitHub", level: 92, category: "Tools & Platforms" },
-  { name: "Google Colab", level: 95, category: "Tools & Platforms" },
-  { name: "Jupyter Notebook", level: 93, category: "Tools & Platforms" },
-  { name: "VS Code", level: 90, category: "Tools & Platforms" },
-  { name: "Linux", level: 85, category: "Tools & Platforms" },
-
-  // Cloud & Deployment
-  { name: "Docker", level: 83, category: "Cloud & Deployment" },
-  { name: "API-based model serving", level: 88, category: "Cloud & Deployment" },
-  { name: "GCP concepts", level: 80, category: "Cloud & Deployment" },
-  { name: "CI/CD basics", level: 78, category: "Cloud & Deployment" }
+export const skillGroups: SkillGroup[] = [
+  {
+    name: "LLMs & Training",
+    skills: [
+      "Large Language Models",
+      "LLM Pretraining",
+      "Fine-tuning (LoRA/QLoRA)",
+      "Prompt Engineering",
+      "Model & Inference Optimization",
+      "Evaluation",
+      "Multimodal AI",
+      "Explainable AI",
+      "PyTorch",
+      "Hugging Face Transformers",
+    ],
+  },
+  {
+    name: "Voice & Conversational AI",
+    skills: ["Voice AI (ASR)", "Conversational AI", "WhatsApp Business API", "Website Chatbots"],
+  },
+  {
+    name: "RAG & Retrieval",
+    skills: ["RAG Pipelines", "Vector Search (FAISS, Qdrant)", "Embeddings & Similarity Search"],
+  },
+  {
+    name: "Agents & Automation",
+    skills: ["CrewAI", "LangChain", "LangGraph", "MCP", "LangSmith", "CRM Integration"],
+  },
+  {
+    name: "Backend & MLOps",
+    skills: ["API-based Model Serving", "Docker", "CI/CD", "GCP", "Linux"],
+  },
+  {
+    name: "Languages & Tools",
+    skills: ["Python", "SQL", "Bash", "Scikit-Learn", "TensorFlow", "Git & GitHub", "Jupyter", "Google Colab"],
+  },
 ];
 
 export const projectsData: Project[] = [
+  {
+    id: "shnu-llm",
+    title: "SHNU-LLM — A Language Model Built From Scratch",
+    description: "A 33.9M-parameter decoder-only Transformer trained from random initialization — custom tokenizer, reproducible multi-session training on free GPUs, and a measured evaluation pipeline.",
+    longDescription: "Building a language model from scratch — not fine-tuning a pretrained one.",
+    technologies: ["Python", "PyTorch", "Transformers from scratch", "BPE Tokenizer", "Evaluation"],
+    githubUrl: "https://github.com/mr-cri-spy/shnu-llm",
+    features: [],
+    imageUrl: "project-shnu-llm",
+    coverAlt: "SHNU LLM logo: white and blue lettering framed by glowing circuit traces on a dark navy background",
+    category: "LLM Research",
+    status: "ongoing",
+    featured: true,
+    badge: "Active research",
+    metrics: ["33.9M params", "PPL 23.94", "BPB 1.040", "117M tokens"],
+    caseStudy: {
+      eyebrow: "LLM Research · Active",
+      title: "SHNU-LLM",
+      subtitle: "Building a language model from scratch — not fine-tuning a pretrained one.",
+      why: "I wanted to understand the full lifecycle of a language model — architecture, tokenization, data, training, decoding, and evaluation — by building every piece from random initialization. The long-term goal is an open-source model and training framework I can use to experiment with data quality, training strategy, decoding, and hallucination reduction.",
+      architecture: [
+        { label: "Type", value: "Decoder-only Transformer" },
+        { label: "Parameters", value: "33.89M" },
+        { label: "Layers", value: "8" },
+        { label: "Hidden dim", value: "512" },
+        { label: "Attention heads", value: "8" },
+        { label: "Vocabulary", value: "16K (custom BPE)" },
+        { label: "Context window", value: "512 tokens" },
+        { label: "Positional encoding", value: "RoPE" },
+        { label: "Normalization", value: "RMSNorm" },
+        { label: "Feed-forward", value: "SwiGLU" },
+        { label: "Embeddings", value: "Tied input/output" },
+        { label: "Init", value: "Random (no pretrained weights)" },
+      ],
+      tokenizer: "I trained a 16,000-token BPE tokenizer from scratch. The tokenizer and its SHA-256 hash are frozen, so every experiment is exactly reproducible.",
+      training: {
+        heading: "Training run v0.2",
+        items: [
+          "Data: WikiText-103, ~117M training tokens",
+          "20,000 optimizer steps",
+          "AdamW · cosine LR decay with warmup · gradient accumulation · BF16",
+          "Hardware: single NVIDIA T4 (free tier)",
+          "Completed across 6 GPU sessions via checkpoint/resume",
+        ],
+      },
+      engineering: {
+        items: [
+          "Checkpoint/resume",
+          "Checkpoint integrity verification",
+          "Dataset & tokenizer SHA-256 verification",
+          "Config validation",
+          "Training status tracking",
+          "Multi-session launcher",
+          "Experiment-specific run names",
+          "Reproducibility tests",
+        ],
+        takeaway: "Six disconnected sessions, one continuous experiment.",
+      },
+      evaluation: {
+        stats: [
+          { label: "Validation loss", value: "3.175" },
+          { label: "Perplexity", value: "23.94" },
+          { label: "Bits-per-byte", value: "1.040" },
+        ],
+        alsoMeasures: "The pipeline also measures repetition, diversity, EOS behavior, generation quality, and context handling.",
+        decoding: "In v0.2.1 I separated decoding from the model so I could measure its effect on fixed weights. Greedy decoding vs sampling (temperature / top-k / top-p), repetition penalty, and no-repeat n-gram blocking produced substantial differences in output quality.",
+      },
+      experiment: {
+        heading: "Now: EXP-001 — data vs architecture",
+        question: "Was v0.2 limited by its architecture, or by the amount and diversity of its data?",
+        body: "Architecture, tokenizer, optimizer, LR schedule, seed, sequence length, effective batch size, and the 20K-step budget are held fixed. Only the data changes: WikiText + FineWeb-Edu, ~234M unique tokens. I measured a FineWeb held-out baseline on v0.2 first, so the comparison has an independent reference point.",
+      },
+      roadmap: [
+        { label: "Better data", state: "active" },
+        { label: "Better pretraining", state: "active" },
+        { label: "Better evaluation", state: "upcoming" },
+        { label: "Better reasoning", state: "upcoming" },
+        { label: "Hallucination reduction", state: "upcoming" },
+        { label: "Efficient inference", state: "upcoming" },
+        { label: "Agent integration", state: "upcoming" },
+      ],
+      status: "SHNU-LLM is a research project, not a frontier model. The first from-scratch pretraining cycle, evaluation framework, and reproducibility infrastructure are complete; EXP-001 is in preparation.",
+    },
+  },
   {
     id: "asr-voice-model",
     title: "ASR Voice Model for Indian Languages",
@@ -153,22 +215,6 @@ export const projectsData: Project[] = [
     ],
     imageUrl: "project-agentic-ai",
     category: "Agentic AI"
-  },
-  {
-    id: "custom-llm-build",
-    title: "Building a Custom LLM",
-    description: "Ongoing personal project to build a custom large language model from the ground up, drawing on hands-on LLM experience from his internship.",
-    longDescription: "Currently building a custom large language model as an independent project, applying and extending what he learned working hands-on with LLMs during his internship. It's actively in progress, covering data preparation, training/fine-tuning decisions, and evaluation as the project develops.",
-    technologies: ["Python", "PyTorch", "Large Language Models", "Fine-tuning (LoRA/QLoRA)", "Hugging Face Transformers"],
-    githubUrl: "https://github.com/mr-cri-spy",
-    demoUrl: "#",
-    features: [
-      "Applying hands-on LLM training and fine-tuning experience from his internship to an independent build",
-      "Actively in progress, with architecture, training, and evaluation decisions ongoing"
-    ],
-    imageUrl: "project-custom-llm",
-    category: "LLM Research",
-    status: "ongoing"
   }
 ];
 
@@ -187,10 +233,9 @@ export const experienceData: Experience[] = [
       "Built an AI-powered HR tool to assist with resume screening and candidate shortlisting using NLP-based matching.",
       "Developed CRM automation workflows to connect AI agents with lead tracking and customer data systems.",
       "Handled DevOps responsibilities including containerization (Docker), deployment pipelines, and environment setup for AI applications.",
-      "Performed testing and QA across AI systems to validate response accuracy and system reliability before deployment.",
-      "Practiced vibe coding for fast prototyping, rapidly iterating from idea to working AI agent."
+      "Performed testing and QA across AI systems to validate response accuracy and system reliability before deployment."
     ],
-    skills: ["Voice AI (ASR)", "WhatsApp Business API", "Website Chatbots", "RAG Concepts", "Docker", "DevOps", "Testing & QA", "Vibe Coding"]
+    skills: ["Voice AI (ASR)", "WhatsApp Business API", "Website Chatbots", "RAG Concepts", "Docker", "DevOps", "Testing & QA"]
   },
   {
     id: "exp2",
