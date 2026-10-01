@@ -1,5 +1,5 @@
-import { applyCors } from "./_cors";
-import { handleTrackLeadRequest, type LeadPayload } from "../src/server/trackLead";
+import { applyCors } from "./_cors.js";
+import { handleTrackLeadRequest, type LeadPayload } from "../src/server/trackLead.js";
 
 interface VercelRequest {
   method?: string;

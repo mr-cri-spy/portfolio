@@ -1,4 +1,4 @@
-import { developerProfile, skillGroups, projectsData, experienceData, certificationsData } from "../data";
+import { developerProfile, skillGroups, projectsData, experienceData, certificationsData } from "../data.js";
 
 // Tried in order — free OpenRouter models are shared and get rate-limited often,
 // so falling through to the next candidate keeps the assistant responsive.

@@ -1,4 +1,4 @@
-import { Profile, Project, SkillGroup, Experience, Certification } from "./types";
+import type { Profile, Project, SkillGroup, Experience, Certification } from "./types.js";
 
 export const developerProfile: Profile = {
   name: "Kiran M",

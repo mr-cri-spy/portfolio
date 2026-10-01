@@ -1,6 +1,6 @@
 {
-  "buildCommand": "echo 'No frontend build needed — this Vercel project only serves the /api functions.'",
-  "outputDirectory": "public",
+  "buildCommand": "vite build",
+  "outputDirectory": "dist",
   "functions": {
     "api/*.ts": {
       "maxDuration": 15

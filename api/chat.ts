@@ -1,5 +1,5 @@
-import { applyCors } from "./_cors";
-import { handleChatRequest, type ChatTurn } from "../src/server/chat";
+import { applyCors } from "./_cors.js";
+import { handleChatRequest, type ChatTurn } from "../src/server/chat.js";
 
 interface VercelRequest {
   method?: string;
