@@ -1,28 +1,28 @@
 import { motion } from "motion/react";
-import { Brain, Zap, Search, Users, Mail, MapPin, Phone } from "lucide-react";
+import { Layers, ShieldCheck, Database, Brain, Mail, MapPin, Phone } from "lucide-react";
 import { developerProfile } from "../data";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 const highlights = [
   {
+    icon: Layers,
+    title: "Product engineering",
+    text: "TypeScript, React and Next.js front to back: data model, API routes, auth, billing and the interface people actually use.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "LLM features that fail gracefully",
+    text: "Structured JSON outputs, streaming, timeouts with deterministic fallbacks and human review where decisions matter.",
+  },
+  {
+    icon: Database,
+    title: "Python, APIs & data",
+    text: "FastAPI services, PostgreSQL with row-level security, webhooks and integrations with CRMs, WhatsApp and payment providers.",
+  },
+  {
     icon: Brain,
-    title: "LLM Fine-Tuning",
-    text: "Hands-on with LoRA/QLoRA adapters to specialize open-source models for domain-specific reasoning and tone.",
-  },
-  {
-    icon: Zap,
-    title: "Voice & Conversational AI",
-    text: "Built real-time ASR pipelines and calling agents combining speech-to-text, LLM reasoning, and text-to-speech.",
-  },
-  {
-    icon: Search,
-    title: "Retrieval-Augmented Generation",
-    text: "Designed grounded RAG systems with vector search to reduce hallucination and improve answer accuracy.",
-  },
-  {
-    icon: Users,
-    title: "Enterprise Automation",
-    text: "Shipped WhatsApp agents, HR screening tools, and CRM workflows that plug AI directly into business operations.",
+    title: "Models, not just APIs",
+    text: "Pretrained a 34M-parameter Transformer from scratch, with an evaluation harness and hash-verified, reproducible data.",
   },
 ];
 

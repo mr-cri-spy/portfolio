@@ -1,38 +1,16 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { X, Github, CheckCircle2, ImageIcon } from "lucide-react";
+import { X, Github, ExternalLink, Lock } from "lucide-react";
 import type { Project } from "../../types";
+import { developerProfile } from "../../data";
 import { useModalA11y } from "../../hooks/useModalA11y";
-import SpecGrid from "./SpecGrid";
-import StatTile from "./StatTile";
-import RoadmapStepper from "./RoadmapStepper";
-import ArchitectureDiagram from "./ArchitectureDiagram";
+import ModelCaseStudyBody from "./ModelCaseStudyBody";
+import ProductCaseStudyBody from "./ProductCaseStudyBody";
 
 interface CaseStudyProps {
   project: Project;
-  coverSrc: string;
+  coverSrc?: string;
   onClose: () => void;
-}
-
-function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
-  return (
-    <section aria-labelledby={id} className="space-y-4">
-      <h3 id={id} className="text-xl sm:text-2xl font-serif font-[700] tracking-tight text-[#262624]">
-        {title}
-      </h3>
-      {children}
-    </section>
-  );
-}
-
-/** Dashed box marking where a real screenshot will go. */
-function ImagePlaceholder({ label }: { label: string }) {
-  return (
-    <div className="flex items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-[#E6E2D8] bg-[#F4F1EA] px-4 py-10 text-center text-sm text-[#83807A]">
-      <ImageIcon className="w-4 h-4 shrink-0" aria-hidden="true" />
-      <span>{label}</span>
-    </div>
-  );
 }
 
 export default function CaseStudy({ project, coverSrc, onClose }: CaseStudyProps) {
@@ -41,14 +19,22 @@ export default function CaseStudy({ project, coverSrc, onClose }: CaseStudyProps
   const reduceMotion = useReducedMotion();
   useModalA11y(true, dialogRef, onClose);
 
+  // The dialog instance is reused when the hash switches case studies; start each one at the top.
+  useEffect(() => {
+    dialogRef.current?.scrollTo({ top: 0 });
+  }, [project.id]);
+
   // No router on this site, so the case study gets its own tab title while open.
   useEffect(() => {
     const previousTitle = document.title;
-    document.title = `${cs.title} — Case Study | Kiran M`;
+    document.title = `${cs.title} · Case Study | ${developerProfile.name}`;
     return () => {
       document.title = previousTitle;
     };
   }, [cs.title]);
+
+  const linkClass =
+    "inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C15F3C]";
 
   return (
     <div className="fixed inset-0 z-50 flex items-stretch sm:items-center justify-center sm:p-4">
@@ -80,100 +66,68 @@ export default function CaseStudy({ project, coverSrc, onClose }: CaseStudyProps
           <X className="w-4 h-4" />
         </button>
 
-        <img
-          src={coverSrc}
-          alt={project.coverAlt ?? project.title}
-          width={1200}
-          height={600}
-          className="w-full aspect-[2/1] object-cover bg-[#0b1530]"
-        />
+        {cs.kind === "model" && coverSrc && (
+          <img
+            src={coverSrc}
+            alt={project.coverAlt ?? project.title}
+            width={1200}
+            height={600}
+            className="w-full aspect-[2/1] object-cover bg-[#0b1530]"
+          />
+        )}
 
         <div className="px-5 sm:px-10 py-8 sm:py-10 space-y-12">
-          {/* Header */}
-          <header className="space-y-3">
+          <header className="space-y-3 pr-10">
             <span className="text-xs uppercase tracking-[0.2em] text-[#C15F3C] font-semibold">{cs.eyebrow}</span>
             <h2 id="case-study-title" className="text-4xl sm:text-5xl font-serif font-[800] tracking-[-0.02em] text-[#262624]">
               {cs.title}
             </h2>
             <p className="text-lg text-[#55534D] leading-relaxed max-w-2xl">{cs.subtitle}</p>
-            {project.githubUrl && (
-              <div className="pt-2">
+            {cs.kind === "product" && (
+              <p className="text-sm text-[#55534D] max-w-2xl">
+                <span className="font-semibold text-[#262624]">My role: </span>
+                {cs.role}
+              </p>
+            )}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              {project.demoUrl && (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${linkClass} bg-[#262624] text-white hover:bg-[#3A3835]`}
+                >
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                  <span>{project.demoLabel ?? "Live demo"}</span>
+                  <span className="sr-only">(opens in a new tab)</span>
+                </a>
+              )}
+              {project.githubUrl && (
                 <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#262624] text-white text-sm font-medium hover:bg-[#3A3835] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C15F3C]"
+                  className={`${linkClass} ${
+                    project.demoUrl
+                      ? "border border-[#E6E2D8] text-[#262624] hover:bg-[#F0EDE4]"
+                      : "bg-[#262624] text-white hover:bg-[#3A3835]"
+                  }`}
                 >
-                  <Github className="w-4 h-4" />
+                  <Github className="w-4 h-4" aria-hidden="true" />
                   <span>GitHub</span>
                   <span className="sr-only">(opens in a new tab)</span>
                 </a>
-              </div>
-            )}
+              )}
+              {!project.githubUrl && project.repoNote && (
+                <span className="inline-flex items-center gap-1.5 text-xs text-[#83807A]">
+                  <Lock className="w-3 h-3" aria-hidden="true" />
+                  {project.repoNote}
+                </span>
+              )}
+            </div>
           </header>
 
-          <Section id="cs-why" title="Why I built it">
-            <p className="text-[#55534D] leading-relaxed max-w-3xl">{cs.why}</p>
-          </Section>
-
-          <Section id="cs-architecture" title="Architecture">
-            <SpecGrid items={cs.architecture} />
-            <div className="bg-white border border-[#EFEBE1] rounded-2xl p-4 sm:p-6">
-              <ArchitectureDiagram />
-            </div>
-          </Section>
-
-          <Section id="cs-tokenizer" title="Tokenizer">
-            <p className="text-[#55534D] leading-relaxed max-w-3xl">{cs.tokenizer}</p>
-          </Section>
-
-          <Section id="cs-training" title={cs.training.heading}>
-            <ul className="space-y-2">
-              {cs.training.items.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm text-[#55534D]">
-                  <span className="inline-block mt-2 w-1.5 h-1.5 rounded-full bg-[#6B7A5E] shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <ImagePlaceholder label="Training / validation loss curve from the v0.2 run — screenshot to be added" />
-          </Section>
-
-          <Section id="cs-engineering" title="Engineering for free-tier GPUs">
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
-              {cs.engineering.items.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm text-[#262624]">
-                  <CheckCircle2 className="w-4 h-4 text-[#6B7A5E] mt-0.5 shrink-0" aria-hidden="true" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="text-base font-serif font-[700] text-[#C15F3C]">{cs.engineering.takeaway}</p>
-          </Section>
-
-          <Section id="cs-evaluation" title="Evaluation">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {cs.evaluation.stats.map((stat) => (
-                <StatTile key={stat.label} {...stat} />
-              ))}
-            </div>
-            <p className="text-sm text-[#83807A]">{cs.evaluation.alsoMeasures}</p>
-            <p className="text-[#55534D] leading-relaxed max-w-3xl">{cs.evaluation.decoding}</p>
-            <ImagePlaceholder label="Sample generation from the evaluation notebook — screenshot to be added (optional)" />
-          </Section>
-
-          <Section id="cs-experiment" title={cs.experiment.heading}>
-            <blockquote className="border-l-4 border-[#C15F3C] bg-[#F3E3D9]/60 rounded-r-2xl px-5 py-4 text-lg font-serif font-[600] text-[#262624]">
-              {cs.experiment.question}
-            </blockquote>
-            <p className="text-[#55534D] leading-relaxed max-w-3xl">{cs.experiment.body}</p>
-          </Section>
-
-          <Section id="cs-roadmap" title="Roadmap">
-            <RoadmapStepper steps={cs.roadmap} />
-          </Section>
-
-          <p className="text-xs text-[#83807A] leading-relaxed border-t border-[#E6E2D8] pt-6">{cs.status}</p>
+          {cs.kind === "model" ? <ModelCaseStudyBody cs={cs} /> : <ProductCaseStudyBody cs={cs} />}
         </div>
       </motion.div>
     </div>

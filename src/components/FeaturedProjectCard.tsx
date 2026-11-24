@@ -1,36 +1,38 @@
 import { motion } from "motion/react";
-import { ArrowRight, Github, Star } from "lucide-react";
+import { ArrowRight, ExternalLink, Github, Lock } from "lucide-react";
 import type { Project } from "../types";
+import FlowCover from "./FlowCover";
 
 interface FeaturedProjectCardProps {
   project: Project;
-  coverSrc: string;
+  coverSrc?: string;
   isVisible: boolean;
+  index: number;
   onOpenCaseStudy: () => void;
 }
 
 /** Full-width flagship card: cover on the left, summary, metrics and actions on the right. */
-export default function FeaturedProjectCard({ project, coverSrc, isVisible, onOpenCaseStudy }: FeaturedProjectCardProps) {
+export default function FeaturedProjectCard({ project, coverSrc, isVisible, index, onOpenCaseStudy }: FeaturedProjectCardProps) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
       aria-labelledby={`${project.id}-title`}
       className="md:col-span-2 rounded-2xl overflow-hidden bg-white gold-accent-border grid grid-cols-1 lg:grid-cols-2"
     >
       <div className="relative bg-[#0b1530]">
-        <img
-          src={coverSrc}
-          alt={project.coverAlt ?? project.title}
-          width={1200}
-          height={600}
-          className="w-full h-full aspect-[2/1] lg:aspect-auto object-cover"
-        />
-        <span className="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#C15F3C] text-white text-[10px] font-semibold uppercase tracking-wide shadow-sm">
-          <Star className="w-3 h-3" fill="currentColor" strokeWidth={0} aria-hidden="true" />
-          Featured
-        </span>
+        {project.coverFlow ? (
+          <FlowCover flow={project.coverFlow} />
+        ) : (
+          <img
+            src={coverSrc}
+            alt={project.coverAlt ?? project.title}
+            width={1200}
+            height={600}
+            className="w-full h-full aspect-[2/1] lg:aspect-auto object-cover"
+          />
+        )}
       </div>
 
       <div className="p-6 sm:p-8 flex flex-col">
@@ -78,6 +80,18 @@ export default function FeaturedProjectCard({ project, coverSrc, isVisible, onOp
             <span>Read case study</span>
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </button>
+          {project.demoUrl && (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#E6E2D8] text-[#262624] text-sm font-medium hover:bg-[#F0EDE4] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C15F3C]"
+            >
+              <ExternalLink className="w-4 h-4" aria-hidden="true" />
+              <span>{project.demoLabel ?? "Live demo"}</span>
+              <span className="sr-only">(opens in a new tab)</span>
+            </a>
+          )}
           {project.githubUrl && (
             <a
               href={project.githubUrl}
@@ -91,8 +105,14 @@ export default function FeaturedProjectCard({ project, coverSrc, isVisible, onOp
             </a>
           )}
         </div>
-        {project.status === "ongoing" && (
-          <p className="text-xs text-[#83807A] mt-3">Still building — follow progress on GitHub.</p>
+        {!project.githubUrl && project.repoNote && (
+          <p className="flex items-center gap-1.5 text-xs text-[#83807A] mt-3">
+            <Lock className="w-3 h-3" aria-hidden="true" />
+            {project.repoNote}
+          </p>
+        )}
+        {project.status === "ongoing" && project.githubUrl && (
+          <p className="text-xs text-[#83807A] mt-3">Still building · follow progress on GitHub.</p>
         )}
       </div>
     </motion.article>

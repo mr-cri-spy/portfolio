@@ -7,7 +7,6 @@ import OperatingLoop from "./components/OperatingLoop";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import Certificates from "./components/Certificates";
-import Testimonials from "./components/Testimonials";
 import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 import AskBot from "./components/AskBot";
@@ -25,7 +24,6 @@ import {
   GraduationCap,
   FileText,
   Award,
-  Sparkles,
   Check,
   Home,
 } from "lucide-react";
@@ -58,7 +56,7 @@ export default function App() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      const sections = ["home", "about", "skills", "projects", "experience", "certificates", "testimonials", "blog", "contact"];
+      const sections = ["home", "projects", "experience", "skills", "about", "blog", "certificates", "contact"];
       const scrollPos = window.scrollY + 140;
 
       for (const section of sections) {
@@ -96,25 +94,23 @@ export default function App() {
   };
 
   const navItems = [
-    { id: "about", label: t("nav_about") },
-    { id: "skills", label: t("nav_skills") },
     { id: "projects", label: t("nav_projects") },
     { id: "experience", label: t("nav_experience") },
-    { id: "certificates", label: t("nav_certificates") },
-    { id: "testimonials", label: t("nav_testimonials") },
+    { id: "skills", label: t("nav_skills") },
+    { id: "about", label: t("nav_about") },
     { id: "blog", label: t("nav_blog") },
+    { id: "certificates", label: t("nav_certificates") },
     { id: "contact", label: t("nav_contact") },
   ];
 
   const mobileNavItems = [
     { id: "home", label: t("nav_home"), icon: <Home className="w-4 h-4" /> },
-    { id: "about", label: t("nav_about"), icon: <User className="w-4 h-4" /> },
-    { id: "skills", label: t("nav_skills"), icon: <Layout className="w-4 h-4" /> },
     { id: "projects", label: t("nav_projects"), icon: <FileText className="w-4 h-4" /> },
     { id: "experience", label: t("nav_experience"), icon: <GraduationCap className="w-4 h-4" /> },
-    { id: "certificates", label: t("nav_certificates"), icon: <Award className="w-4 h-4" /> },
-    { id: "testimonials", label: t("nav_testimonials"), icon: <Sparkles className="w-4 h-4" /> },
+    { id: "skills", label: t("nav_skills"), icon: <Layout className="w-4 h-4" /> },
+    { id: "about", label: t("nav_about"), icon: <User className="w-4 h-4" /> },
     { id: "blog", label: t("nav_blog"), icon: <FileText className="w-4 h-4" /> },
+    { id: "certificates", label: t("nav_certificates"), icon: <Award className="w-4 h-4" /> },
     { id: "contact", label: t("nav_contact"), icon: <Mail className="w-4 h-4" /> },
   ];
 
@@ -229,14 +225,13 @@ export default function App() {
       {/* Main content */}
       <main className="flex-grow">
         <Hero onNavigate={handleNavigate} />
-        <About />
-        <Skills />
-        <OperatingLoop />
         <Projects />
         <Experience />
-        <Certificates />
-        <Testimonials />
+        <Skills />
+        <OperatingLoop />
+        <About />
         <Blog />
+        <Certificates />
         <Contact />
       </main>
 
@@ -247,7 +242,17 @@ export default function App() {
             <span className="font-serif font-semibold text-base text-[#262624]">
               {developerProfile.name} &copy; {new Date().getFullYear()}
             </span>
-            <span className="text-xs text-[#83807A]">Built with care in Bengaluru, India</span>
+            <span className="text-xs text-[#83807A]">
+              Built with React, TypeScript and Vite ·{" "}
+              <a
+                href="https://github.com/mr-cri-spy/portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-[#E6E2D8] underline-offset-2 hover:text-[#C15F3C]"
+              >
+                source on GitHub
+              </a>
+            </span>
           </div>
 
           <div className="flex items-center gap-3">

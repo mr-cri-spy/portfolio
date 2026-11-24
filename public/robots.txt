@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mr-cri-spy.github.io/portfolio/sitemap.xml
+Sitemap: https://portfolio-psi-five-46.vercel.app/sitemap.xml
