@@ -54,6 +54,8 @@ Availability: ${developerProfile.availability}
 Email: ${developerProfile.email}
 GitHub: ${developerProfile.github}
 LinkedIn: ${developerProfile.linkedin}
+Medium: ${developerProfile.medium ?? "n/a"}
+X (Twitter): ${developerProfile.x ?? "n/a"}
 
 SKILLS:
 ${skillsSummary}

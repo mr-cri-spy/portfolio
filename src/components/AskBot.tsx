@@ -17,7 +17,7 @@ const STARTER_PROMPTS = [
   "Is he available for a call next week?",
 ];
 
-const STORAGE_KEY = "askbot-live-transcript-v1";
+const STORAGE_KEY = "askbot-live-transcript-v2";
 const WELCOME_MESSAGE =
   "Hi, I'm Kiran's AI assistant. Ask me anything about his skills, projects, experience, or availability for a call.";
 

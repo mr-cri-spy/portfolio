@@ -115,6 +115,8 @@ export interface Profile {
   email: string;
   github: string;
   linkedin: string;
+  x?: string;
+  medium?: string;
   resumeUrl: string;
   bio: string;
   location: string;
