@@ -1,4 +1,4 @@
-import type { Profile, Project, SkillGroup, Experience, Certification } from "./types.js";
+import type { Profile, Project, SkillGroup, Experience, Education, Certification } from "./types.js";
 
 export const developerProfile: Profile = {
   name: "Kiran M B",
@@ -8,7 +8,7 @@ export const developerProfile: Profile = {
   github: "https://github.com/mr-cri-spy",
   linkedin: "https://linkedin.com/in/kiran-m-36334b343",
   resumeUrl: "#",
-  bio: "Product-minded full-stack engineer. Since 2023 I've built software for real users: 30+ websites and apps as a freelancer, AI agents and assistants for clients under the Mashnu AI name, and client AI work at Naaz AI Labs with Python, FastAPI, RAG and voice AI. I build end to end (data model, API, React interface and the AI features in between), as in Blue Bright HR, a multi-tenant AI hiring platform, and Lenj, a challenge platform with privacy enforced in Postgres and 300+ automated tests. To understand the layer underneath, I also pretrained a small language model from scratch.",
+  bio: "Product-minded full-stack engineer. Since 2023 I've built software for real users: 30+ websites and apps as a freelancer, AI agents and assistants for clients under the Mashnu AI name, and client AI work at Naaz AI Labs with Python, FastAPI, RAG and voice AI. I build end to end (data model, API, React interface and the AI features in between), as in Blue Bright HR (multi-tenant AI hiring), Flybird (AI social media management) and Lenj (a challenge platform with privacy enforced in Postgres and 300+ automated tests). To understand the layer underneath, I also pretrained a small language model from scratch.",
   location: "Mysore, India",
   availability: "Open to Product Engineer roles · happy to relocate",
 };
@@ -30,6 +30,8 @@ export const skillGroups: SkillGroup[] = [
       "Drizzle ORM",
       "Prisma",
       "SQL",
+      "SQLAlchemy & Alembic",
+      "Redis & Celery",
       "Pydantic",
       "Zod",
       "Stripe & Razorpay",
@@ -70,7 +72,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     name: "Testing & delivery",
-    skills: ["Vitest", "Playwright", "GitHub Actions", "Docker", "Vercel", "Render", "Git & GitHub", "Linux & Bash", "GCP", "AWS (exposure)"],
+    skills: ["Vitest", "Playwright", "pytest", "GitHub Actions", "Docker", "Vercel", "Render", "Git & GitHub", "Linux & Bash", "GCP", "AWS (exposure)"],
   },
 ];
 
@@ -219,7 +221,7 @@ export const projectsData: Project[] = [
       title: "Lenj",
       subtitle:
         "A social challenge platform: set a measurable goal with a deadline, post progress, submit evidence a human reviewer checks, and earn a trophy that says plainly whether the result was verified or self-reported.",
-      role: "Designed, built and run: product, schema, API, UI, tests, CI and deployment.",
+      role: "Designed, built and run: product, schema, API, UI, tests, CI and deployment. I also made and edited Lenj's ads, which are running publicly.",
       why: "Lenj's core promise is that a trophy means something: every result is labelled verified (evidence checked by a person) or self-reported. Many users are young, so privacy and safety had to be part of the product from day one, not an add-on.",
       stats: [
         { value: "104", label: "API routes" },
@@ -274,8 +276,109 @@ export const projectsData: Project[] = [
         built: [
           "Full MVP: challenges, progress, evidence review, trophies, social feed, moderation console, data export and deletion",
           "Staging environment at lenj.mashnu.com, deployed through a GitHub Actions workflow",
+          "Ads made and edited in-house, running publicly",
         ],
         next: ["Production launch", "In-app recording and editing for challenge videos"],
+      },
+    },
+  },
+  {
+    id: "flybird",
+    title: "Flybird — AI Social Media Management SaaS",
+    description:
+      "An AI-native workspace for small businesses and agencies: plan a campaign, generate on-brand posts for Instagram, Facebook and LinkedIn, approve, schedule and measure. AI drafts never publish without a person's approval.",
+    longDescription:
+      "A multi-tenant marketing SaaS with a FastAPI backend, a React/TypeScript front end and Postgres row-level security, built in test-gated sprints.",
+    technologies: ["React", "TypeScript", "Vite", "FastAPI", "PostgreSQL (FORCE RLS)", "SQLAlchemy & Alembic", "Redis & Celery"],
+    repoNote: "Private repo · code and docs walkthrough on request",
+    features: [],
+    category: "B2B SaaS · Generative AI",
+    featured: true,
+    badge: "Internal sandbox",
+    coverFlow: {
+      caption: "Create once, grow everywhere",
+      steps: [
+        { label: "Plan a campaign" },
+        { label: "Generate on-brand posts", tag: "AI" },
+        { label: "Review & approve", tag: "Human" },
+        { label: "Schedule" },
+        { label: "Measure" },
+      ],
+      footer: "drafts can't publish without approval",
+    },
+    metrics: ["500+ backend tests", "143 frontend tests", "31/35 tables · FORCE RLS", "Human approval gate"],
+    caseStudy: {
+      kind: "product",
+      eyebrow: "Product · B2B SaaS · Generative AI",
+      title: "Flybird",
+      subtitle:
+        "An AI-native social media workspace for small businesses and agencies: plan a campaign, generate platform-specific posts in the brand's own voice, approve, schedule and measure, all in one place.",
+      role: "Product owner and architect: scope, architecture, security model and release gates, delivered in test-gated sprints.",
+      why: "Small businesses need to post consistently on several platforms, in one recognisable voice, usually without a marketing team. Flybird turns a campaign plan into platform-specific drafts in the business's own voice, and keeps a person in charge of everything that gets published.",
+      stats: [
+        { value: "500+", label: "Backend tests" },
+        { value: "143", label: "Frontend tests" },
+        { value: "31/35", label: "Tables with forced row-level security" },
+        { value: "14/14", label: "Cross-tenant isolation checks" },
+      ],
+      flow: [
+        { label: "Plan", detail: "Campaign planning with goals, audience and industry presets." },
+        {
+          label: "Generate",
+          tag: "AI",
+          detail: "Platform-specific drafts in the business's brand voice, with quality evaluation and per-plan AI quotas.",
+        },
+        {
+          label: "Approve",
+          tag: "Human",
+          detail: "Every AI draft stays a draft until a person explicitly approves it.",
+        },
+        {
+          label: "Schedule",
+          detail: "A least-privilege scheduler sees only approved posts; publishing adapters fail closed.",
+        },
+        { label: "Measure", detail: "Campaign analytics and notifications in the same workspace." },
+      ],
+      stack: [
+        { label: "Frontend", value: "React · TypeScript · Vite" },
+        { label: "Backend", value: "FastAPI (Python) · modular monolith" },
+        { label: "Data", value: "PostgreSQL · SQLAlchemy · Alembic · FORCE RLS" },
+        { label: "Jobs", value: "Redis · Celery" },
+        { label: "Integrations", value: "AI, social and billing providers behind interfaces with offline test doubles" },
+        { label: "Quality", value: "pytest · frontend tests · browser journeys · Ruff · Mypy" },
+      ],
+      decisions: [
+        {
+          title: "Human approval as an invariant",
+          body: "AI output is always a draft. Publishing needs explicit approval, and the scheduler runs as a least-privilege database role that cannot read drafts or promote them, so the rule holds even if application code has a bug.",
+        },
+        {
+          title: "Tenant isolation enforced by Postgres",
+          body: "31 of 35 tables use row-level security with FORCE RLS; the other four are global by design. Two-tenant test vectors and pooled-connection lifecycle tests check that one customer's context never leaks into another's request.",
+        },
+        {
+          title: "Runs and tests without paid APIs",
+          body: "AI, social publishing and billing providers sit behind interfaces with deterministic offline implementations, so the whole product runs and is tested locally at no cost, and live adapters fail closed.",
+        },
+        {
+          title: "Secrets and auditability",
+          body: "Connected-account tokens are encrypted at rest, sensitive actions are written to an audit log, and operations are idempotent so retries are safe.",
+        },
+        {
+          title: "Evidence-gated releases",
+          body: "Every sprint closes with a written evidence record: test results, security checks, open risks and what is not yet proven. Claims stay labelled as verified, simulated or pending.",
+        },
+      ],
+      status: {
+        built: [
+          "Campaign planning, brand voice, AI generation with quality evaluation, approvals, scheduling, analytics, notifications and onboarding",
+          "Internal sandbox validated end to end with synthetic businesses across six industries",
+        ],
+        next: [
+          "Connect live Instagram, Facebook and LinkedIn accounts",
+          "External beta with real businesses",
+          "Live billing",
+        ],
       },
     },
   },
@@ -456,11 +559,29 @@ export const experienceData: Experience[] = [
   {
     id: "exp3",
     role: "System & Network Engineer",
-    company: "Ravi Infotec",
+    company: "Ravi Infotech",
+    companyUrl: "https://raviinfotech.net/",
     location: "Mysore, India",
     period: "2022 – 2023",
-    description: [],
+    description: [
+      "Systems and network engineering at an IT services firm (hardware, cabled and wireless networking, backups and maintenance contracts), supporting its business clients.",
+    ],
     skills: ["Systems", "Networking"],
+  },
+];
+
+export const educationData: Education[] = [
+  {
+    id: "mca",
+    degree: "Master of Computer Applications (MCA)",
+    institution: "Mangalore University",
+    period: "2025",
+  },
+  {
+    id: "bca",
+    degree: "Bachelor of Computer Applications (BCA)",
+    institution: "BGS First Grade College, University of Mysore",
+    period: "2019 – 2022",
   },
 ];
 

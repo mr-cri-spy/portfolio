@@ -91,10 +91,18 @@ export interface Experience {
   id: string;
   role: string;
   company: string;
+  companyUrl?: string;
   location: string;
   period: string;
   description: string[];
   skills: string[];
+}
+
+export interface Education {
+  id: string;
+  degree: string;
+  institution: string;
+  period: string;
 }
 
 export interface Profile {

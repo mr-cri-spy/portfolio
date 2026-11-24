@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
-import { experienceData } from "../data";
-import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { experienceData, educationData } from "../data";
+import { Briefcase, Calendar, MapPin, GraduationCap, ExternalLink } from "lucide-react";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 export default function Experience() {
@@ -34,7 +34,22 @@ export default function Experience() {
                       <Briefcase className="w-4 h-4 text-[#83807A]" />
                       <span>{exp.role}</span>
                     </h3>
-                    <div className="text-sm font-medium text-[#55534D]">{exp.company}</div>
+                    <div className="text-sm font-medium text-[#55534D]">
+                      {exp.companyUrl ? (
+                        <a
+                          href={exp.companyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 hover:text-[#C15F3C] transition-colors"
+                        >
+                          {exp.company}
+                          <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                          <span className="sr-only">(opens in a new tab)</span>
+                        </a>
+                      ) : (
+                        exp.company
+                      )}
+                    </div>
                   </div>
 
                   <div className="flex flex-wrap items-center gap-2 text-xs">
@@ -73,6 +88,26 @@ export default function Experience() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-16">
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-[#262624] mb-5 pb-2 border-b border-[#E6E2D8]">
+            Education
+          </h3>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {educationData.map((edu) => (
+              <li key={edu.id} className="card-surface rounded-2xl p-5 flex items-start gap-3.5">
+                <span className="w-10 h-10 shrink-0 rounded-xl bg-[#F3E3D9] flex items-center justify-center">
+                  <GraduationCap className="w-5 h-5 text-[#C15F3C]" aria-hidden="true" />
+                </span>
+                <span className="flex flex-col">
+                  <span className="text-sm font-semibold text-[#262624]">{edu.degree}</span>
+                  <span className="text-sm text-[#55534D]">{edu.institution}</span>
+                  <span className="text-xs font-mono text-[#83807A] mt-1">{edu.period}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

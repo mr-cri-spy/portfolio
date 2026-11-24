@@ -80,8 +80,8 @@ export default function Projects() {
           <span className="text-xs uppercase tracking-[0.2em] text-[#C15F3C] font-semibold">Work</span>
           <h2 className="text-4xl sm:text-5xl font-serif tracking-tight text-[#262624] mt-3">Selected work.</h2>
           <p className="text-[#55534D] text-lg mt-4 leading-relaxed">
-            Two products and a language model I designed and built end to end. Each case study covers the problem, the
-            architecture, the trade-offs and what's still missing.
+            Three products and a language model I designed and built end to end. Each case study covers the problem,
+            the architecture, the trade-offs and what's still missing.
           </p>
         </div>
 
