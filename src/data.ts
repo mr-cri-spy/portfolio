@@ -571,11 +571,13 @@ export const experienceData: Experience[] = [
     location: "Bengaluru · Remote",
     period: "January 2025 – December 2025",
     description: [
-      "Built AI-employee products that combine conversational interfaces, business logic and automation, and AI assistants with API/CRM integrations and RAG retrieval.",
-      "Prototyped and shipped AI features in Python with Hugging Face tooling, LangChain and backend components.",
+      "Fine-tuned open-source LLMs with LoRA and QLoRA to cut memory and compute cost, and tuned prompts, parameters and inference settings for answer quality and speed.",
+      "Built training and evaluation pipelines for custom LLM behaviour; this pretraining work grew into SHNU-LLM, Mashnu's own language model trained from scratch.",
+      "Connected LLM agents to tools and business systems through APIs, CRM integrations and the Model Context Protocol (MCP), and built AI-employee products with conversational interfaces, automation and RAG retrieval.",
+      "Worked across the model lifecycle: deployment workflows, evaluation metrics and model versioning, in Python with Hugging Face, PyTorch and LangChain.",
       "Ran client requirement analysis, solution demos and post-delivery refinements.",
     ],
-    skills: ["Product engineering", "Python", "LangChain", "Hugging Face", "RAG", "API & CRM integrations"],
+    skills: ["LLM fine-tuning (LoRA/QLoRA)", "Pretraining", "MCP", "Python", "PyTorch", "Hugging Face", "LangChain", "RAG", "API & CRM integrations"],
   },
   {
     id: "freelance",
