@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -9,7 +9,6 @@ import Experience from "./components/Experience";
 import Certificates from "./components/Certificates";
 import Blog from "./components/Blog";
 import Contact from "./components/Contact";
-import AskBot from "./components/AskBot";
 import { useLanguage } from "./context/LanguageContext";
 import { developerProfile } from "./data";
 import { trackSection } from "./utils/analytics";
@@ -29,6 +28,8 @@ import {
   AtSign,
   PenLine,
 } from "lucide-react";
+
+const AskBot = lazy(() => import("./components/AskBot"));
 
 export default function App() {
   const { t } = useLanguage();
@@ -311,7 +312,9 @@ export default function App() {
         </div>
       </footer>
 
-      <AskBot />
+      <Suspense fallback={null}>
+        <AskBot />
+      </Suspense>
 
       {/* Toasts */}
       <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-2 pointer-events-none max-w-sm">

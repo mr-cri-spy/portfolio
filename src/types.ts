@@ -23,6 +23,12 @@ export interface Project {
   coverAlt?: string;
   /** Drawn cover (a product's core flow) used instead of an image. */
   coverFlow?: CoverFlow;
+  /** Real screenshot used as the cover: key of src/assets/images/screen-<key>.webp. */
+  coverScreen?: string;
+  /** Short label shown on a screenshot cover, e.g. "Staging app". */
+  coverLabel?: string;
+  /** Drawn header for compact cards that have no screenshot. */
+  cardArt?: "chat" | "browsers" | "graph";
   metrics?: string[];
   caseStudy?: CaseStudy;
 }

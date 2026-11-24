@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Github, ExternalLink, X, Check, Briefcase, Bot, Code2, Globe, Sparkles, ArrowUpRight } from "lucide-react";
 import { projectsData } from "../data";
@@ -8,9 +8,18 @@ import { trackEvent } from "../utils/analytics";
 import { CASE_STUDY_HASH, caseStudyHref } from "../utils/caseStudy";
 import type { Project } from "../types";
 import FeaturedProjectCard from "./FeaturedProjectCard";
-import CaseStudy from "./case-study/CaseStudy";
+import CardArt from "./CardArt";
+
+// The case study (and its diagrams) only loads when someone opens one.
+const CaseStudy = lazy(() => import("./case-study/CaseStudy"));
 
 const localProjectImages = import.meta.glob("../assets/images/project-*.webp", { eager: true, import: "default" }) as Record<string, string>;
+const screenImages = import.meta.glob("../assets/images/screen-*.webp", { eager: true, import: "default" }) as Record<string, string>;
+
+function resolveScreen(key?: string): string | undefined {
+  if (!key) return undefined;
+  return Object.entries(screenImages).find(([path]) => path.endsWith(`/screen-${key}.webp`))?.[1];
+}
 
 function resolveProjectImage(imageUrl?: string): string | undefined {
   if (!imageUrl) return undefined;
@@ -98,6 +107,7 @@ export default function Projects() {
               project={project}
               index={i}
               coverSrc={resolveProjectImage(project.imageUrl)}
+              screenSrc={resolveScreen(project.coverScreen)}
               isVisible={isVisible}
               onOpenCaseStudy={() => openCaseStudy(project)}
             />
@@ -120,20 +130,34 @@ export default function Projects() {
                     animate={isVisible ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
                     whileHover={{ y: -4, boxShadow: "0 16px 36px -14px rgba(38, 38, 36, 0.18)" }}
-                    className="card-surface rounded-2xl p-6 flex flex-col text-left cursor-pointer group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C15F3C]"
+                    className="card-surface rounded-2xl overflow-hidden flex flex-col text-left cursor-pointer group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C15F3C]"
                     onClick={() => setSelectedProject(project)}
                   >
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="w-10 h-10 rounded-xl bg-[#F3E3D9] flex items-center justify-center">
-                        <Icon className="w-5 h-5 text-[#C15F3C]" aria-hidden="true" />
+                    {project.coverScreen ? (
+                      <span className="block aspect-[2/1] w-full overflow-hidden border-b border-[#EFEBE1] bg-[#FAF9F5]">
+                        <img
+                          src={resolveScreen(project.coverScreen)}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          width={1200}
+                          height={600}
+                          className="w-full h-full object-cover object-left-top transition-transform duration-500 group-hover:scale-[1.03]"
+                        />
+                      </span>
+                    ) : project.cardArt ? (
+                      <CardArt variant={project.cardArt} />
+                    ) : null}
+                    <span className="p-6 flex flex-col flex-1">
+                    <span className="flex items-center justify-between mb-1.5">
+                      <span className="inline-flex items-center gap-2 text-xs font-medium text-[#C15F3C] uppercase tracking-wide">
+                        <Icon className="w-4 h-4" aria-hidden="true" />
+                        {project.category}
                       </span>
                       <ArrowUpRight
                         className="w-4 h-4 text-[#83807A] group-hover:text-[#C15F3C] transition-colors"
                         aria-hidden="true"
                       />
-                    </div>
-                    <span className="text-xs font-medium text-[#C15F3C] uppercase tracking-wide mb-1.5">
-                      {project.category}
                     </span>
                     <span className="text-lg font-semibold text-[#262624] mb-2">{project.title}</span>
                     <span className="text-sm text-[#55534D] leading-relaxed mb-4 flex-1">{project.description}</span>
@@ -149,6 +173,7 @@ export default function Projects() {
                         </span>
                       )}
                     </span>
+                    </span>
                   </motion.button>
                 );
               })}
@@ -157,16 +182,18 @@ export default function Projects() {
         )}
       </div>
 
-      <AnimatePresence>
-        {caseStudyProject && (
-          <CaseStudy
-            key="case-study"
-            project={caseStudyProject}
-            coverSrc={resolveProjectImage(caseStudyProject.imageUrl)}
-            onClose={closeCaseStudy}
-          />
-        )}
-      </AnimatePresence>
+      <Suspense fallback={null}>
+        <AnimatePresence>
+          {caseStudyProject && (
+            <CaseStudy
+              key="case-study"
+              project={caseStudyProject}
+              coverSrc={resolveProjectImage(caseStudyProject.imageUrl)}
+              onClose={closeCaseStudy}
+            />
+          )}
+        </AnimatePresence>
+      </Suspense>
 
       <AnimatePresence>
         {selectedProject && <ProjectDetail project={selectedProject} onClose={closeDetail} />}

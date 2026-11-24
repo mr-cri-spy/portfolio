@@ -92,6 +92,8 @@ export const projectsData: Project[] = [
     category: "B2B SaaS · LLM features",
     featured: true,
     badge: "End-to-end build",
+    coverScreen: "bbhr-landing",
+    coverLabel: "Landing page with the live sandbox demo",
     coverFlow: {
       caption: "Hiring pipeline",
       steps: [
@@ -186,6 +188,13 @@ export const projectsData: Project[] = [
           "Wire CV-to-job matching into the recruiter UI",
         ],
       },
+      screens: [
+        {
+          key: "bbhr-landing",
+          alt: "Blue Bright HR landing page: headline 'The AI-Powered Virtual HR Operating System' above a live sandbox that scores a sample candidate",
+          caption: "Landing page with the live sandbox: pick a role and the AI match report renders for a sample candidate.",
+        },
+      ],
     },
   },
   {
@@ -203,6 +212,8 @@ export const projectsData: Project[] = [
     category: "Consumer web app",
     featured: true,
     badge: "In staging",
+    coverScreen: "lenj-home",
+    coverLabel: "Staging app",
     coverFlow: {
       caption: "Challenge loop",
       steps: [
@@ -495,6 +506,7 @@ export const projectsData: Project[] = [
       "Worked with client stakeholders from discovery to delivery and iterated on their feedback",
     ],
     category: "Client work",
+    cardArt: "chat",
   },
   {
     id: "freelance-sites",
@@ -511,6 +523,7 @@ export const projectsData: Project[] = [
       "Colours checked against WCAG AA, with automated smoke tests for cart, wishlist, search and mobile navigation",
     ],
     category: "Freelance",
+    cardArt: "browsers",
   },
   {
     id: "agentic-ai-systems",
@@ -529,6 +542,7 @@ export const projectsData: Project[] = [
       "LangSmith tracing to debug and evaluate agent runs",
     ],
     category: "Agents · R&D",
+    cardArt: "graph",
   },
   {
     id: "portfolio-assistant",
@@ -546,6 +560,7 @@ export const projectsData: Project[] = [
       "Self-hostable Express server with Helmet and rate limiting",
     ],
     category: "Open source",
+    coverScreen: "portfolio-hero",
   },
 ];
 
