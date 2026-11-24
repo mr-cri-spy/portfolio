@@ -1,35 +1,35 @@
 import { motion } from "motion/react";
-import { GitBranch, Cpu, Search, Rocket } from "lucide-react";
+import { Users, Database, Rocket, Sparkles } from "lucide-react";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 const steps = [
   {
     num: "01",
-    title: "Ingest & Structure",
-    description: "Aggregating and sanitizing raw domain datasets, chat transcripts, or documentation into a balanced, high-fidelity fine-tuning corpus.",
-    duration: "Week 1–2",
-    icon: GitBranch,
+    title: "Start from the workflow",
+    description: "Sit with the people doing the job, map the steps and the edge cases, and agree what done looks like before writing code.",
+    output: "Problem + success criteria",
+    icon: Users,
   },
   {
     num: "02",
-    title: "Fine-Tune & Align",
-    description: "Applying efficient LoRA/QLoRA adapters onto open-source foundation models to shape specialized reasoning and tone.",
-    duration: "Week 2–4",
-    icon: Cpu,
+    title: "Model the data first",
+    description: "Schema, tenancy and permissions come before screens, so security lives in the database and not only in the UI.",
+    output: "Schema + RLS policies",
+    icon: Database,
   },
   {
     num: "03",
-    title: "Index & Ground",
-    description: "Building dense vector retrieval (FAISS, ChromaDB) so responses stay grounded in real, current context, minimizing drift and hallucination.",
-    duration: "Week 4–5",
-    icon: Search,
+    title: "Ship a thin slice",
+    description: "One path working end to end (database, API, React UI, deployed), then widen it. Tests and CI from the first week.",
+    output: "Deployed vertical slice",
+    icon: Rocket,
   },
   {
     num: "04",
-    title: "Deploy & Optimize",
-    description: "Shipping to production with containerized deployment, latency tuning, and continuous evaluation against real usage.",
-    duration: "Week 5–6",
-    icon: Rocket,
+    title: "Add AI where it earns its place",
+    description: "Structured outputs, streaming, timeouts with fallbacks and evals, so AI makes the product better without making it fragile.",
+    output: "JSON outputs + fallbacks + evals",
+    icon: Sparkles,
   },
 ];
 
@@ -63,7 +63,7 @@ export default function OperatingLoop() {
               </div>
               <h3 className="text-base font-semibold text-[#262624] mb-2">{step.title}</h3>
               <p className="text-sm text-[#55534D] leading-relaxed mb-3">{step.description}</p>
-              <span className="text-xs font-mono text-[#83807A] uppercase tracking-wide">{step.duration}</span>
+              <span className="text-xs font-mono text-[#83807A]">→ {step.output}</span>
             </motion.div>
           ))}
         </div>

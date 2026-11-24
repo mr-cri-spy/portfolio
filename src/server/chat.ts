@@ -12,17 +12,32 @@ const OPENROUTER_MODELS = [
 const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
 
 const AVAILABILITY_NOTE =
-  "Kiran is generally available for calls Monday–Friday, 10:00 AM–6:00 PM IST (Bengaluru time). " +
+  "Kiran is generally available for calls Monday–Friday, 10:00 AM–6:00 PM IST (India Standard Time, UTC+5:30). " +
   "This assistant does not have live access to his calendar yet, so it cannot confirm an exact free slot — " +
   "it can only state his general working hours and pass along the visitor's preferred time so Kiran can confirm.";
 
 function buildSystemInstruction(): string {
   const skillsSummary = skillGroups.map((g) => `- ${g.name}: ${g.skills.join(", ")}`).join("\n");
 
-  const projectsSummary = projectsData.map((p) => `- ${p.title}: ${p.description}`).join("\n");
+  const projectsSummary = projectsData
+    .map((p) => {
+      const links = [p.demoUrl && `link: ${p.demoUrl}`, p.githubUrl && `code: ${p.githubUrl}`, p.repoNote]
+        .filter(Boolean)
+        .join("; ");
+      const details: string[] = [];
+      if (p.metrics?.length) details.push(`Metrics: ${p.metrics.join(", ")}.`);
+      if (p.caseStudy?.kind === "product") {
+        details.push(`Stack: ${p.caseStudy.stack.map((s) => `${s.label}: ${s.value}`).join("; ")}.`);
+        details.push(`Engineering decisions: ${p.caseStudy.decisions.map((d) => d.title).join("; ")}.`);
+        details.push(`Built: ${p.caseStudy.status.built.join("; ")}. Next: ${p.caseStudy.status.next.join("; ")}.`);
+      }
+      const detailText = details.length ? `\n  ${details.join(" ")}` : "";
+      return `- ${p.title}: ${p.description}${links ? ` (${links})` : ""}${detailText}`;
+    })
+    .join("\n");
 
   const experienceSummary = experienceData
-    .map((e) => `- ${e.role} at ${e.company} (${e.period}): ${e.description[0]}`)
+    .map((e) => `- ${e.role} at ${e.company} (${e.period})${e.description.length ? `: ${e.description.join(" ")}` : ""}`)
     .join("\n");
 
   const certsSummary = certificationsData
@@ -33,8 +48,9 @@ function buildSystemInstruction(): string {
   return `You are the AI assistant on ${developerProfile.name}'s personal portfolio website. You represent Kiran to visitors, recruiters, and potential clients.
 
 ABOUT KIRAN:
-${developerProfile.bio}
+${developerProfile.title}. ${developerProfile.bio}
 Location: ${developerProfile.location}
+Availability: ${developerProfile.availability}
 Email: ${developerProfile.email}
 GitHub: ${developerProfile.github}
 LinkedIn: ${developerProfile.linkedin}

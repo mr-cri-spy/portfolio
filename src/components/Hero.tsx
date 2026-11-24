@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useMotionValue, useMotionTemplate, useScroll, useSpring, useTransform } from "motion/react";
 import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
 import { developerProfile } from "../data";
+import { caseStudyHref } from "../utils/caseStudy";
 // @ts-ignore
 import kiranPortraitWebp from "../assets/images/kiran.webp";
 // @ts-ignore
@@ -11,7 +12,14 @@ interface HeroProps {
   onNavigate: (section: string) => void;
 }
 
-const HEADLINE_LINES = ["Building intelligent", "systems that think,", "retrieve, and respond."];
+const HEADLINE_LINES = ["AI products,", "built end to end:", "schema to screen."];
+
+// Shortcuts straight into the case studies, for visitors who only have a minute.
+const RECENT_BUILDS = [
+  { id: "blue-bright-hr", name: "Blue Bright HR", line: "Multi-tenant AI hiring SaaS" },
+  { id: "lenj", name: "Lenj", line: "Challenge platform · 300+ tests" },
+  { id: "shnu-llm", name: "SHNU-LLM", line: "34M-param LLM, from scratch" },
+];
 
 const headlineContainer = {
   hidden: {},
@@ -28,7 +36,7 @@ const headlineLine = {
 };
 
 export default function Hero({ onNavigate }: HeroProps) {
-  const tags = ["LLMs from scratch", "LoRA / QLoRA Fine-Tuning", "RAG & Vector Search", "Voice AI"];
+  const tags = ["TypeScript · React · Next.js", "Python · FastAPI", "PostgreSQL", "LLM agents · RAG"];
 
   const sectionRef = useRef<HTMLElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -81,14 +89,14 @@ export default function Hero({ onNavigate }: HeroProps) {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#E6E2D8] text-[#55534D] text-xs font-medium"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#6B7A5E]" />
-            <span>Open for contracts &amp; roles</span>
+            <span>{developerProfile.availability}</span>
           </motion.div>
 
           <motion.h1
             variants={headlineContainer}
             initial="hidden"
             animate="show"
-            className="text-[42px] sm:text-6xl lg:text-[76px] leading-[1.05] font-serif font-[800] tracking-[-0.03em] text-[#262624] break-words"
+            className="text-[42px] sm:text-6xl lg:text-[64px] leading-[1.05] font-serif font-[800] tracking-[-0.03em] text-[#262624] break-words"
           >
             {HEADLINE_LINES.map((line, i) => (
               <span key={line} className="block overflow-hidden pb-1">
@@ -108,9 +116,9 @@ export default function Hero({ onNavigate }: HeroProps) {
             transition={{ duration: 0.5, delay: 0.55 }}
             className="text-[#55534D] text-lg max-w-xl leading-relaxed"
           >
-            I'm <span className="text-[#262624] font-medium">{developerProfile.name}</span>, an AI/ML Engineer
-            specializing in LLM fine-tuning, voice AI, and RAG systems, turning research-grade models into
-            production-ready products.
+            I'm <span className="text-[#262624] font-medium">{developerProfile.name}</span>, a full-stack AI product
+            engineer. I design and ship LLM-powered software end to end (data model, API, React interface and the AI
+            features in between) in TypeScript and Python.
           </motion.p>
 
           <motion.div
@@ -146,15 +154,44 @@ export default function Hero({ onNavigate }: HeroProps) {
               onClick={() => onNavigate("projects")}
               className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#E6E2D8] text-[#262624] text-sm font-medium rounded-full hover:bg-[#F0EDE4] transition-all cursor-pointer active:scale-95"
             >
-              <span>View my work</span>
+              <span>See selected work</span>
             </button>
           </motion.div>
+
+          <motion.nav
+            aria-label="Recent builds"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.85 }}
+            className="w-full max-w-xl"
+          >
+            <p className="text-[11px] uppercase tracking-[0.2em] text-[#83807A] font-semibold mb-3">Recent builds</p>
+            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              {RECENT_BUILDS.map((item) => (
+                <li key={item.id}>
+                  <a
+                    href={caseStudyHref(item.id)}
+                    className="group block h-full rounded-xl border border-[#E6E2D8] bg-white/70 px-3.5 py-3 hover:border-[#C15F3C]/40 hover:bg-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C15F3C]"
+                  >
+                    <span className="flex items-center justify-between gap-2 text-sm font-semibold text-[#262624]">
+                      {item.name}
+                      <ArrowUpRight
+                        className="w-3.5 h-3.5 shrink-0 text-[#83807A] group-hover:text-[#C15F3C] transition-colors"
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <span className="block text-xs text-[#55534D] mt-0.5 leading-snug">{item.line}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.nav>
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.85 }}
-            className="flex items-center gap-2 text-sm text-[#83807A] pt-2"
+            transition={{ duration: 0.5, delay: 0.95 }}
+            className="flex items-center gap-2 text-sm text-[#83807A]"
           >
             <MapPin className="w-4 h-4" />
             <span>{developerProfile.location}</span>
@@ -218,7 +255,7 @@ export default function Hero({ onNavigate }: HeroProps) {
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          onClick={() => onNavigate("about")}
+          onClick={() => onNavigate("projects")}
           className="p-2 rounded-full bg-white border border-[#E6E2D8] hover:border-[#C15F3C]/40 cursor-pointer text-[#83807A] hover:text-[#C15F3C] transition-all duration-300"
         >
           <ArrowDown className="w-4 h-4" />

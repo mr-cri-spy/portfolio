@@ -1,76 +1,306 @@
 import type { Profile, Project, SkillGroup, Experience, Certification } from "./types.js";
 
 export const developerProfile: Profile = {
-  name: "Kiran M",
-  title: "AI/ML Engineer | LLM Developer | Generative AI Specialist",
-  subTitle: "Specializing in Large Language Models, fine-tuning, voice AI, RAG systems, and enterprise automation.",
+  name: "Kiran M B",
+  title: "Full-Stack AI Product Engineer",
+  subTitle: "TypeScript · React · Python · LLM agents",
   email: "kiraj8899@gmail.com",
   github: "https://github.com/mr-cri-spy",
   linkedin: "https://linkedin.com/in/kiran-m-36334b343",
   resumeUrl: "#",
-  bio: "AI/ML Engineer with hands-on experience across voice AI, RAG systems, enterprise automation, and LLMs, from LoRA/QLoRA fine-tuning to pretraining a language model from scratch. Comfortable working across the full stack of an AI system, including model training, backend APIs, DevOps deployment, and testing. Passionate about building scalable, ethical, human-centered AI solutions. Also exploring Quantum Machine Learning.",
-  location: "Bengaluru, India"
+  bio: "Product-minded full-stack engineer. Since 2023 I've built software for real users: 30+ websites and apps as a freelancer, AI agents and assistants for clients under the Mashnu AI name, and client AI work at Naaz AI Labs with Python, FastAPI, RAG and voice AI. I build end to end (data model, API, React interface and the AI features in between), as in Blue Bright HR, a multi-tenant AI hiring platform, and Lenj, a challenge platform with privacy enforced in Postgres and 300+ automated tests. To understand the layer underneath, I also pretrained a small language model from scratch.",
+  location: "Mysore, India",
+  availability: "Open to Product Engineer roles · happy to relocate",
 };
 
 export const skillGroups: SkillGroup[] = [
   {
-    name: "LLMs & Training",
+    name: "Product engineering",
+    skills: ["TypeScript", "JavaScript", "React", "Next.js (App Router)", "Vite", "Tailwind CSS", "Radix UI", "Recharts", "Node.js", "Express"],
+  },
+  {
+    name: "Backend & data",
     skills: [
-      "Large Language Models",
-      "LLM Pretraining",
-      "Fine-tuning (LoRA/QLoRA)",
-      "Prompt Engineering",
-      "Model & Inference Optimization",
-      "Evaluation",
-      "Multimodal AI",
-      "Explainable AI",
-      "PyTorch",
-      "Hugging Face Transformers",
+      "Python",
+      "FastAPI",
+      "REST APIs",
+      "Webhooks",
+      "PostgreSQL (row-level security)",
+      "Supabase",
+      "Drizzle ORM",
+      "Prisma",
+      "SQL",
+      "Pydantic",
+      "Zod",
+      "Stripe & Razorpay",
     ],
   },
   {
-    name: "Voice & Conversational AI",
-    skills: ["Voice AI (ASR)", "Conversational AI", "WhatsApp Business API", "Website Chatbots"],
+    name: "LLM features & agents",
+    skills: [
+      "LLM agents",
+      "Tool calling",
+      "Structured (JSON) outputs",
+      "Streaming",
+      "RAG",
+      "Embeddings",
+      "Vector DBs (Qdrant, FAISS, Pinecone)",
+      "LangChain",
+      "LangGraph",
+      "CrewAI",
+      "MCP",
+      "LangSmith",
+      "Evals & guardrails",
+    ],
   },
   {
-    name: "RAG & Retrieval",
-    skills: ["RAG Pipelines", "Vector Search (FAISS, Qdrant)", "Embeddings & Similarity Search"],
+    name: "Voice & conversational AI",
+    skills: ["Voice agents (STT → LLM → TTS)", "WhatsApp Business API", "Website chatbots", "CRM integration"],
   },
   {
-    name: "Agents & Automation",
-    skills: ["CrewAI", "LangChain", "LangGraph", "MCP", "LangSmith", "CRM Integration"],
+    name: "Models & training",
+    skills: [
+      "PyTorch",
+      "Hugging Face Transformers",
+      "Pretraining from scratch",
+      "LoRA / QLoRA fine-tuning",
+      "BPE tokenizers",
+      "Evaluation (perplexity, bits-per-byte)",
+    ],
   },
   {
-    name: "Backend & MLOps",
-    skills: ["API-based Model Serving", "Docker", "CI/CD", "GCP", "Linux"],
-  },
-  {
-    name: "Languages & Tools",
-    skills: ["Python", "SQL", "Bash", "Scikit-Learn", "TensorFlow", "Git & GitHub", "Jupyter", "Google Colab"],
+    name: "Testing & delivery",
+    skills: ["Vitest", "Playwright", "GitHub Actions", "Docker", "Vercel", "Render", "Git & GitHub", "Linux & Bash", "GCP", "AWS (exposure)"],
   },
 ];
 
 export const projectsData: Project[] = [
   {
+    id: "blue-bright-hr",
+    title: "Blue Bright HR — AI Hiring Platform",
+    description:
+      "A multi-tenant B2B SaaS where AI drafts the job post, runs the first-round interview and scores the transcript, and a recruiter makes every decision.",
+    longDescription:
+      "A multi-tenant hiring platform built end to end in Next.js, TypeScript and Postgres, with LLM features for job descriptions, interviews and evaluation.",
+    technologies: ["Next.js 16", "React 19", "TypeScript", "Supabase Postgres", "Groq · Llama 3.3 70B", "Razorpay & Stripe", "Vercel"],
+    demoUrl: "https://blue-bright-hr.vercel.app",
+    demoLabel: "Live app",
+    repoNote: "Private repo · happy to walk through the code",
+    features: [],
+    category: "B2B SaaS · LLM features",
+    featured: true,
+    badge: "End-to-end build",
+    coverFlow: {
+      caption: "Hiring pipeline",
+      steps: [
+        { label: "Post a job", tag: "AI" },
+        { label: "Candidate applies" },
+        { label: "AI interview", tag: "AI" },
+        { label: "Scored report", tag: "AI" },
+        { label: "Recruiter decides", tag: "Human" },
+      ],
+      footer: "org_id + row-level security on 11/11 tables",
+    },
+    metrics: ["42 API routes", "11 tables · RLS on all", "5 AI agents", "TypeScript strict"],
+    caseStudy: {
+      kind: "product",
+      eyebrow: "Product · B2B SaaS · LLM features",
+      title: "Blue Bright HR",
+      subtitle:
+        "A multi-tenant hiring platform where AI drafts job descriptions, runs first-round interviews and summarises candidates, and a recruiter makes every decision.",
+      role: "Designed and built end to end: data model, API, UI, LLM features, billing and deployment.",
+      why: "Hiring at small and mid-sized companies stalls on busywork: writing job posts, reading CVs, scheduling and running first-round interviews. Blue Bright HR automates that pipeline end to end, so recruiters spend their time on decisions instead of admin.",
+      stats: [
+        { value: "42", label: "API routes" },
+        { value: "11/11", label: "Tables with row-level security" },
+        { value: "5", label: "AI agents on one shared UI" },
+        { value: "6 s", label: "LLM timeout before a template fallback" },
+      ],
+      flow: [
+        {
+          label: "Post a job",
+          tag: "AI",
+          detail: "The recruiter names the role; the LLM drafts the job description and a weighted evaluation rubric as structured JSON.",
+        },
+        {
+          label: "Candidate applies",
+          detail: "Public careers page, no account needed. The CV's text is extracted and the candidate gets a unique interview link.",
+        },
+        {
+          label: "AI interview",
+          tag: "AI",
+          detail: "Text or video-and-voice. Questions adapt to the CV and the role, and replies stream in real time. Consent is logged before it starts.",
+        },
+        {
+          label: "Scored report",
+          tag: "AI",
+          detail: "The transcript is scored into a structured report: a HIRE / MAYBE / REJECT recommendation with strengths and gaps.",
+        },
+        {
+          label: "Recruiter decides",
+          tag: "Human",
+          detail: "Dashboard with scores, transcripts and a hiring funnel. Shortlisting and rejection stay with the recruiter.",
+        },
+      ],
+      stack: [
+        { label: "Frontend", value: "Next.js 16 (App Router) · React 19 · TypeScript strict · Recharts" },
+        { label: "Backend", value: "42 route handlers · session auth · internal service secret" },
+        { label: "Data", value: "Supabase Postgres · 11 tables, RLS on every one" },
+        { label: "AI", value: "Groq · Llama 3.3 70B · JSON mode · token streaming · face-api.js" },
+        { label: "Billing", value: "Razorpay & Stripe · plan tiers · verified, idempotent webhooks" },
+        { label: "Delivery", value: "Vercel · deploys on every push to main" },
+      ],
+      decisions: [
+        {
+          title: "Tenant isolation in two layers",
+          body: "Every tenant table carries org_id with row-level security. API routes use a service-role client that bypasses RLS, so each route also scopes its queries to the caller's organisation, with RLS as the backstop. Auditing that pattern surfaced a real cross-tenant bug (a route used the first organisation in the database instead of the caller's), which I fixed.",
+        },
+        {
+          title: "LLM output is data, not prose",
+          body: "Job descriptions, rubrics and evaluations come back in JSON mode and are parsed before they reach the database or the UI. Job-description generation races a 6-second timeout: if the model is slow, the recruiter gets a sensible template instead of a spinner.",
+        },
+        {
+          title: "Payments that are safe to retry",
+          body: "A trial and three paid tiers gate active jobs, monthly AI interviews and seats on the server. Payment webhooks are signature-verified, and each event is recorded so a redelivered webhook is never applied twice.",
+        },
+        {
+          title: "Configuration over custom code",
+          body: "Notifications are configured per organisation, per event and per channel (WhatsApp, SMS, voice, email). Five HR agents share one AgentCommandCenter component, and a second product vertical runs on the same tenant and auth foundation.",
+        },
+        {
+          title: "Privacy by default in proctoring",
+          body: "Candidates opt in before the interview starts and the consent is logged. Face detection runs client-side with face-api.js, so the camera frames used for that check never leave the browser.",
+        },
+      ],
+      status: {
+        built: [
+          "Core flow working end to end: job post, application, AI interview, scored report, recruiter review",
+          "Auth, multi-tenancy, plan limits and hiring analytics",
+          "Payment and messaging integrations (WhatsApp, SMS, voice) written with signature checks",
+        ],
+        next: [
+          "Connect live payment and messaging provider accounts",
+          "Move interview reminders to a scheduler",
+          "Wire CV-to-job matching into the recruiter UI",
+        ],
+      },
+    },
+  },
+  {
+    id: "lenj",
+    title: "Lenj — Social Challenge Platform",
+    description:
+      "Set a measurable goal, post progress, submit evidence a human reviewer checks, and earn a trophy marked verified or self-reported. Privacy is enforced in Postgres, and every push runs 300+ automated tests in CI.",
+    longDescription:
+      "A full-stack TypeScript product with database-enforced privacy, a moderation console, a media pipeline and an automated test suite that runs on every push.",
+    technologies: ["Next.js 16", "React 19", "TypeScript", "PostgreSQL 16 (RLS)", "Drizzle ORM", "Zod", "Vitest", "Playwright", "Docker", "GitHub Actions"],
+    demoUrl: "https://lenj.mashnu.com",
+    demoLabel: "Staging app",
+    repoNote: "Private repo · happy to walk through the code",
+    features: [],
+    category: "Consumer web app",
+    featured: true,
+    badge: "In staging",
+    coverFlow: {
+      caption: "Challenge loop",
+      steps: [
+        { label: "Set a challenge" },
+        { label: "Post progress" },
+        { label: "Submit evidence" },
+        { label: "Human review", tag: "Human" },
+        { label: "Trophy: verified or self-reported" },
+      ],
+      footer: "290 unit & integration · 44 browser tests",
+    },
+    metrics: ["104 API routes", "290 unit & integration tests", "44 Playwright tests", "24 migrations"],
+    caseStudy: {
+      kind: "product",
+      eyebrow: "Product · Full-stack TypeScript",
+      title: "Lenj",
+      subtitle:
+        "A social challenge platform: set a measurable goal with a deadline, post progress, submit evidence a human reviewer checks, and earn a trophy that says plainly whether the result was verified or self-reported.",
+      role: "Designed, built and run: product, schema, API, UI, tests, CI and deployment.",
+      why: "Lenj's core promise is that a trophy means something: every result is labelled verified (evidence checked by a person) or self-reported. Many users are young, so privacy and safety had to be part of the product from day one, not an add-on.",
+      stats: [
+        { value: "104", label: "API routes" },
+        { value: "290", label: "Unit & integration tests" },
+        { value: "44", label: "Playwright browser tests" },
+        { value: "24", label: "Database migrations" },
+      ],
+      flow: [
+        { label: "Set a challenge", detail: "A measurable goal with a deadline, public or private." },
+        {
+          label: "Post progress",
+          detail: "Updates the community can cheer on. Photos and videos go through a media pipeline that strips EXIF and GPS data.",
+        },
+        {
+          label: "Submit evidence",
+          detail: "Evidence stays private to reviewers, enforced by Postgres row-level security rather than by the UI.",
+        },
+        {
+          label: "Human review",
+          tag: "Human",
+          detail: "Reviewer-conflict checks, claims and disputes that escalate to a second admin.",
+        },
+        { label: "Trophy", detail: "Marked verified or self-reported, so it means what it says." },
+      ],
+      stack: [
+        { label: "Frontend", value: "Next.js 16 (App Router) · React 19 · TypeScript" },
+        { label: "Backend", value: "104 route handlers · Zod validation · Argon2 password hashing" },
+        { label: "Data", value: "PostgreSQL 16 · row-level security · Drizzle ORM · 24 migrations" },
+        { label: "Media", value: "S3-compatible storage (Cloudflare R2) · sharp · ffmpeg" },
+        { label: "Testing", value: "Vitest on a real Postgres · Playwright browser journeys" },
+        { label: "Delivery", value: "Docker · GitHub Actions · Render + Neon (staging)" },
+      ],
+      decisions: [
+        {
+          title: "Privacy enforced in the database",
+          body: "Row-level security does the enforcing. Integration tests run as the non-owner app role and try to read another user's private evidence with raw SQL; it is denied. In production the server refuses to start if its database connection could bypass RLS.",
+        },
+        {
+          title: "Audit before launch",
+          body: "A release-readiness audit found a serious privacy defect (private and under-18 accounts were visible on other people's public challenges) and four abuse or resilience issues: forgeable IP rate limiting, unbounded request bodies, reset-email flooding and a slow mail server blocking requests. Each fix ships with a regression test that fails on the old code.",
+        },
+        {
+          title: "CI that mirrors production",
+          body: "Every push runs type checks, lint, formatting, unit and integration tests on PostgreSQL 16, a production build, Playwright browser tests and a Docker image check in GitHub Actions. The first CI run caught a hydration bug that local runs had hidden.",
+        },
+        {
+          title: "Built to run on free tiers",
+          body: "Render, Neon and Cloudflare R2 shaped the design: a database-free liveness endpoint keeps health checks from waking the database, and a staging workflow migrates, checks the database, deploys and smoke-tests in one run.",
+        },
+      ],
+      status: {
+        built: [
+          "Full MVP: challenges, progress, evidence review, trophies, social feed, moderation console, data export and deletion",
+          "Staging environment at lenj.mashnu.com, deployed through a GitHub Actions workflow",
+        ],
+        next: ["Production launch", "In-app recording and editing for challenge videos"],
+      },
+    },
+  },
+  {
     id: "shnu-llm",
     title: "SHNU-LLM — A Language Model Built From Scratch",
-    description: "A 33.9M-parameter decoder-only Transformer trained from random initialization — custom tokenizer, reproducible multi-session training on free GPUs, and a measured evaluation pipeline.",
-    longDescription: "Building a language model from scratch — not fine-tuning a pretrained one.",
+    description:
+      "A 33.9M-parameter decoder-only Transformer trained from random initialization: custom tokenizer, reproducible multi-session training on free GPUs, and a measured evaluation pipeline.",
+    longDescription: "Building a language model from scratch, not fine-tuning a pretrained one.",
     technologies: ["Python", "PyTorch", "Transformers from scratch", "BPE Tokenizer", "Evaluation"],
     githubUrl: "https://github.com/mr-cri-spy/shnu-llm",
     features: [],
     imageUrl: "project-shnu-llm",
     coverAlt: "SHNU LLM logo: white and blue lettering framed by glowing circuit traces on a dark navy background",
-    category: "LLM Research",
+    category: "LLM research",
     status: "ongoing",
     featured: true,
     badge: "Active research",
-    metrics: ["33.9M params", "PPL 23.94", "BPB 1.040", "117M tokens"],
+    metrics: ["33.9M params", "PPL 23.94", "BPB 1.040", "35 tests"],
     caseStudy: {
+      kind: "model",
       eyebrow: "LLM Research · Active",
       title: "SHNU-LLM",
-      subtitle: "Building a language model from scratch — not fine-tuning a pretrained one.",
-      why: "I wanted to understand the full lifecycle of a language model — architecture, tokenization, data, training, decoding, and evaluation — by building every piece from random initialization. The long-term goal is an open-source model and training framework I can use to experiment with data quality, training strategy, decoding, and hallucination reduction.",
+      subtitle: "Building a language model from scratch, not fine-tuning a pretrained one.",
+      why: "I wanted to understand the full lifecycle of a language model (architecture, tokenization, data, training, decoding and evaluation) by building every piece from random initialization. The long-term goal is an open-source model and training framework I can use to experiment with data quality, training strategy, decoding and hallucination reduction.",
       architecture: [
         { label: "Type", value: "Decoder-only Transformer" },
         { label: "Parameters", value: "33.89M" },
@@ -85,7 +315,8 @@ export const projectsData: Project[] = [
         { label: "Embeddings", value: "Tied input/output" },
         { label: "Init", value: "Random (no pretrained weights)" },
       ],
-      tokenizer: "I trained a 16,000-token BPE tokenizer from scratch. The tokenizer and its SHA-256 hash are frozen, so every experiment is exactly reproducible.",
+      tokenizer:
+        "I trained a 16,000-token BPE tokenizer from scratch. The tokenizer and its SHA-256 hash are frozen, so every experiment is exactly reproducible.",
       training: {
         heading: "Training run v0.2",
         items: [
@@ -94,6 +325,7 @@ export const projectsData: Project[] = [
           "AdamW · cosine LR decay with warmup · gradient accumulation · BF16",
           "Hardware: single NVIDIA T4 (free tier)",
           "Completed across 6 GPU sessions via checkpoint/resume",
+          "Released as v0.2.0 with 35 automated tests",
         ],
       },
       engineering: {
@@ -115,157 +347,121 @@ export const projectsData: Project[] = [
           { label: "Perplexity", value: "23.94" },
           { label: "Bits-per-byte", value: "1.040" },
         ],
-        alsoMeasures: "The pipeline also measures repetition, diversity, EOS behavior, generation quality, and context handling.",
-        decoding: "In v0.2.1 I separated decoding from the model so I could measure its effect on fixed weights. Greedy decoding vs sampling (temperature / top-k / top-p), repetition penalty, and no-repeat n-gram blocking produced substantial differences in output quality.",
+        alsoMeasures: "The pipeline also measures repetition, diversity, EOS behavior, generation quality and context handling.",
+        decoding:
+          "In v0.2.1 I separated decoding from the model so I could measure its effect on fixed weights. Greedy decoding vs sampling (temperature / top-k / top-p), repetition penalty and no-repeat n-gram blocking produced substantial differences in output quality.",
       },
       experiment: {
-        heading: "Now: EXP-001 — data vs architecture",
+        heading: "EXP-001: data vs architecture (closed)",
         question: "Was v0.2 limited by its architecture, or by the amount and diversity of its data?",
-        body: "Architecture, tokenizer, optimizer, LR schedule, seed, sequence length, effective batch size, and the 20K-step budget are held fixed. Only the data changes: WikiText + FineWeb-Edu, ~234M unique tokens. I measured a FineWeb held-out baseline on v0.2 first, so the comparison has an independent reference point.",
+        body: "Everything was held fixed except the data: WikiText-103 plus FineWeb-Edu, with every dataset file hash-verified before training. The run completed, but against the thresholds set before it started the verdict was FAIL, so v0.2.0 stays the baseline. An improvement on FineWeb-Edu text is recorded only as a secondary finding, because the change in data distribution confounds it, and the generation-repetition failure is documented. A negative result, reported as one.",
       },
       roadmap: [
-        { label: "Better data", state: "active" },
-        { label: "Better pretraining", state: "active" },
-        { label: "Better evaluation", state: "upcoming" },
-        { label: "Better reasoning", state: "upcoming" },
-        { label: "Hallucination reduction", state: "upcoming" },
-        { label: "Efficient inference", state: "upcoming" },
-        { label: "Agent integration", state: "upcoming" },
+        { label: "Pretraining v0.2.0", state: "done" },
+        { label: "Evaluation harness", state: "done" },
+        { label: "EXP-001 data test", state: "done" },
+        { label: "Inference foundation", state: "done" },
+        { label: "Checkpoint bridge", state: "active" },
+        { label: "EXP-003 data mixing", state: "upcoming" },
+        { label: "Assistant platform", state: "upcoming" },
       ],
-      status: "SHNU-LLM is a research project, not a frontier model. The first from-scratch pretraining cycle, evaluation framework, and reproducibility infrastructure are complete; EXP-001 is in preparation.",
+      status:
+        "SHNU-LLM is a research project, not a frontier model. The first from-scratch pretraining cycle, evaluation framework and reproducibility tooling are complete. EXP-001 closed with a negative result; current work is on the inference side: converting training checkpoints into a model-only format for serving.",
     },
   },
   {
-    id: "asr-voice-model",
-    title: "ASR Voice Model for Indian Languages",
-    description: "Built a speech recognition pipeline supporting Hindi and English for use in voice AI agents.",
-    longDescription: "Built a speech recognition pipeline supporting Hindi and English for use in voice AI agents. Worked on real-time audio processing for voice-based customer interactions.",
-    technologies: ["Python", "Voice AI (ASR)", "PyTorch", "Real-time Audio Processing", "Hindi & English Speech Corpora"],
-    githubUrl: "https://github.com/mr-cri-spy",
-    demoUrl: "#",
+    id: "client-ai-agents",
+    title: "Voice, WhatsApp & RAG Agents",
+    description:
+      "Client AI work at Naaz AI Labs: voice workflows (speech-to-text → LLM → text-to-speech), WhatsApp agents, RAG chatbots and CRM automations, built as Python/FastAPI services.",
+    longDescription:
+      "AI features delivered for client businesses at Naaz AI Labs, connecting LLMs to the systems those businesses already run on: phone calls, WhatsApp, websites and CRMs.",
+    technologies: ["Python", "FastAPI", "RAG", "Vector DBs", "WhatsApp Business API", "Voice AI", "CRM integration"],
     features: [
-      "Built a speech recognition pipeline supporting Hindi and English for use in voice AI agents",
-      "Worked on real-time audio processing for voice-based customer interactions"
+      "Built Python/FastAPI services and API integrations that connect LLM features to clients' existing business systems",
+      "Built RAG applications (retrieval, embeddings, vector stores) for grounded, document-based answers",
+      "Developed voice-AI workflows combining speech-to-text, LLM processing and text-to-speech",
+      "Contributed to agent and automation workflows that act through external tools: CRM processes, WhatsApp messaging and follow-ups",
+      "Worked with client stakeholders from discovery to delivery and iterated on their feedback",
     ],
-    imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=600",
-    category: "Speech AI"
-  },
-  {
-    id: "rag-chatbot",
-    title: "Website RAG Chatbot",
-    description: "Built a retrieval-augmented chatbot connecting a vector database to an LLM for context-aware answers.",
-    longDescription: "Built a retrieval-augmented chatbot connecting a vector database to an LLM for context-aware, document-grounded answers. Focused on response accuracy and reducing hallucination through grounded retrieval.",
-    technologies: ["Python", "RAG Concepts", "Vector Search (FAISS)", "Large Language Models", "Website Chatbots"],
-    githubUrl: "https://github.com/mr-cri-spy",
-    demoUrl: "#",
-    features: [
-      "Built a retrieval-augmented chatbot connecting a vector database to an LLM for context-aware, document-grounded answers",
-      "Focused on response accuracy and reducing hallucination through grounded retrieval"
-    ],
-    imageUrl: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=600",
-    category: "Conversational AI"
-  },
-  {
-    id: "hr-screening",
-    title: "AI HR Screening Tool",
-    description: "Built an NLP-based system to screen resumes and match candidates against job requirements.",
-    longDescription: "Built an NLP-based system to screen resumes and match candidates against job requirements. Focused on highly accurate keyword-in-context matching, semantics similarity scoring, and dynamic scoring rules.",
-    technologies: ["Python", "NLP Concepts", "Scikit-Learn", "Prompt Engineering", "Resume Screening Automation"],
-    githubUrl: "https://github.com/mr-cri-spy",
-    demoUrl: "#",
-    features: [
-      "Built an NLP-based system to screen resumes and match candidates against job requirements",
-      "Assists HR managers by shortlisting high-relevance candidates using semantic similarity metrics"
-    ],
-    imageUrl: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=600",
-    category: "Enterprise Automation"
-  },
-  {
-    id: "mind-clone",
-    title: "Multimodal 'Mind Clone' AI System",
-    description: "Designed a personalized AI system mimicking thinking style, response patterns, and unique reasoning behaviors.",
-    longDescription: "Designed a personalized AI system that mimics thinking style, response patterns, and reasoning behavior. Integrated LLM fine-tuning with custom datasets representing personal knowledge and communication style. Explored multimodal extensions for future voice and visual interaction.",
-    technologies: ["Python", "Hugging Face Transformers", "Fine-tuning (LoRA/QLoRA)", "Custom Datasets", "Multimodal AI Concepts"],
-    githubUrl: "https://github.com/mr-cri-spy",
-    demoUrl: "#",
-    features: [
-      "Designed a personalized AI system that mimics thinking style, response patterns, and reasoning behavior",
-      "Integrated LLM fine-tuning with custom datasets representing personal knowledge and communication style",
-      "Explored multimodal extensions for future voice and visual interaction"
-    ],
-    imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600",
-    category: "Multimodal AI"
+    category: "Client work",
   },
   {
     id: "agentic-ai-systems",
-    title: "Agentic AI Systems",
-    description: "Built a range of autonomous multi-agent systems, from a hotel booking agent to debate-simulation and receptionist agents, using CrewAI, LangChain, and LangGraph.",
-    longDescription: "Designed and built multiple autonomous agent systems across different domains, including a hotel booking agent, debate-simulation agents modeling opposing legal arguments, an AI receptionist/front-desk management agent, and AI anchor-style presenter agents. Used CrewAI and LangGraph to orchestrate multi-agent workflows with defined roles, tools, and handoffs, LangChain for tool integration and retrieval, and the Model Context Protocol (MCP) and Agent-to-Agent (A2A) protocol for structured agent communication. Used LangSmith for tracing, debugging, and evaluating agent runs.",
-    technologies: ["CrewAI", "LangChain", "LangGraph", "MCP", "A2A Protocol", "LangSmith", "Python", "Multi-Agent Orchestration"],
-    githubUrl: "https://github.com/mr-cri-spy",
-    demoUrl: "#",
+    title: "Multi-Agent Experiments",
+    description:
+      "Hotel-booking, front-desk and debate-simulation agents built to learn multi-agent orchestration: CrewAI and LangGraph workflows, tool calling, MCP and LangSmith tracing.",
+    longDescription:
+      "A set of agent systems built to learn how multi-agent workflows behave in practice: roles, tools, handoffs, and how to trace and debug them.",
+    technologies: ["CrewAI", "LangGraph", "LangChain", "MCP", "A2A Protocol", "LangSmith", "Python"],
     features: [
-      "Built a hotel booking agent that handles multi-turn reservation conversations and tool calls",
-      "Designed debate-simulation agents that argue opposing legal positions in a structured back-and-forth",
-      "Built an AI receptionist / front-desk management agent for handling routine inquiries and routing",
-      "Built AI anchor-style presenter agents for generating and delivering structured narration",
-      "Orchestrated multi-agent handoffs and tool use with CrewAI and LangGraph",
-      "Used MCP and the A2A protocol for structured, standardized agent-to-agent and agent-to-tool communication",
-      "Used LangSmith to trace, debug, and evaluate agent behavior across runs"
+      "A hotel-booking agent that handles multi-turn reservation conversations and tool calls",
+      "Debate-simulation agents that argue opposing legal positions in a structured back-and-forth",
+      "An AI receptionist / front-desk agent for routine inquiries and routing",
+      "Multi-agent handoffs and tool use orchestrated with CrewAI and LangGraph",
+      "MCP and the A2A protocol for structured agent-to-agent and agent-to-tool communication",
+      "LangSmith tracing to debug and evaluate agent runs",
     ],
-    imageUrl: "project-agentic-ai",
-    category: "Agentic AI"
-  }
+    category: "Agents · R&D",
+  },
+  {
+    id: "portfolio-assistant",
+    title: "This Site + AI Assistant",
+    description:
+      "React 19, TypeScript and Vite, with a chat assistant grounded in this site's own data that falls back across free LLM models when one is rate-limited.",
+    longDescription:
+      "The site you're on. The assistant's system prompt is generated from the same typed data the pages render, so the two can't drift apart.",
+    technologies: ["React 19", "TypeScript", "Vite", "Tailwind CSS", "Vercel Functions", "Express", "OpenRouter"],
+    githubUrl: "https://github.com/mr-cri-spy/portfolio",
+    features: [
+      "Typed content model (src/data.ts) drives both the pages and the assistant's system prompt",
+      "Server-side LLM calls with an ordered fallback across free OpenRouter models",
+      "Deployed as one Vercel project: static site plus /api functions",
+      "Self-hostable Express server with Helmet and rate limiting",
+    ],
+    category: "Open source",
+  },
 ];
 
 export const experienceData: Experience[] = [
   {
     id: "exp1",
-    role: "AI/ML Engineer",
+    role: "AI Engineer",
     company: "Naaz AI Labs",
     location: "Bengaluru, India",
-    period: "January 2026 – June 2026",
+    period: "January 2026 – November 2026",
     description: [
-      "Trained and fine-tuned ASR (Automatic Speech Recognition) voice models for Indian languages, including Hindi and English, for use in voice-based AI products.",
-      "Built AI voice calling agents combining speech-to-text, LLM response generation, and text-to-speech for customer-facing automation.",
-      "Developed WhatsApp AI agents using the WhatsApp Business API for conversational automation and customer engagement.",
-      "Built website AI chatbots using RAG (Retrieval-Augmented Generation) architecture with vector database integration for accurate, context-aware responses.",
-      "Built an AI-powered HR tool to assist with resume screening and candidate shortlisting using NLP-based matching.",
-      "Developed CRM automation workflows to connect AI agents with lead tracking and customer data systems.",
-      "Handled DevOps responsibilities including containerization (Docker), deployment pipelines, and environment setup for AI applications.",
-      "Performed testing and QA across AI systems to validate response accuracy and system reliability before deployment."
+      "Developed and integrated LLM solutions for client businesses, building Python/FastAPI services and API integrations that connect AI features to existing business systems.",
+      "Built RAG applications (retrieval, embeddings, vector stores) and developed voice-AI workflows combining speech-to-text, LLM processing and text-to-speech.",
+      "Contributed to AI agent and automation workflows that execute tasks through external tools: CRM processes, WhatsApp messaging and follow-ups.",
+      "Partnered with client stakeholders from discovery through delivery, translating business requirements into technical workflows and iterating on their feedback.",
+      "Tested application behaviour and model outputs, refining prompts and workflows for relevance and reliability.",
     ],
-    skills: ["Voice AI (ASR)", "WhatsApp Business API", "Website Chatbots", "RAG Concepts", "Docker", "DevOps", "Testing & QA"]
+    skills: ["Python", "FastAPI", "LLM integration", "RAG", "Voice AI", "WhatsApp Business API", "CRM automation", "Client delivery"],
   },
   {
     id: "exp2",
-    role: "LLM Intern",
-    company: "Tulcuz",
-    location: "India / Remote",
-    period: "June 2025 – December 2025",
+    role: "Freelance Full-Stack & AI Developer",
+    company: "Self-employed · working as Mashnu AI from January 2025",
+    location: "Mysore · Remote",
+    period: "2023 – December 2025",
     description: [
-      "Worked on training and fine-tuning Large Language Models using modern transformer architectures.",
-      "Implemented LoRA and QLoRA techniques to fine-tune models with reduced memory and compute cost.",
-      "Optimized LLM performance through prompt engineering, parameter tuning, and inference optimization.",
-      "Built experimental pipelines for custom LLM behavior aligned with specific knowledge and reasoning patterns.",
-      "Collaborated on multimodal AI concepts, combining text understanding with other modalities.",
-      "Gained hands-on experience with LLM deployment workflows, evaluation metrics, and model lifecycle management."
+      "Built 30+ websites and web applications for clients and end users, including Taksha Studios and Sai Vihaar Inn & Suites.",
+      "In 2025 the work continued under the Mashnu AI name (full-time from July 2025): AI-employee workflows that combine conversational interfaces, business logic and automation, and AI assistants with API/CRM integrations and RAG retrieval.",
+      "Prototyped and refined AI features in Python with Hugging Face tooling, LangChain and backend components.",
+      "Ran client work end to end: requirements, solution demos, delivery and post-delivery refinements.",
     ],
-    skills: ["Large Language Models", "LoRA/QLoRA", "Model Optimization", "Prompt Engineering", "Multimodal AI Concepts", "Deployment Workflows"]
+    skills: ["Websites & web apps", "Python", "LangChain", "Hugging Face", "RAG", "API & CRM integrations", "Client delivery"],
   },
   {
     id: "exp3",
-    role: "AI Content Creator",
-    company: "Medium & Instagram",
-    location: "Online",
-    period: "2025 – Present",
-    description: [
-      "AI content creator sharing AI/ML learning and experiments on Medium & Instagram.",
-      "Continuous learner in LLMs, Multimodal AI, and Advanced NLP.",
-      "Publish tutorials, experimental insights, and guides to demystify complex neural network and Generative AI concepts for a global audience."
-    ],
-    skills: ["Technical Writing", "LLM Learning", "Multimodal AI", "Advanced NLP", "Community Engagement"]
-  }
+    role: "System & Network Engineer",
+    company: "Ravi Infotec",
+    location: "Mysore, India",
+    period: "2022 – 2023",
+    description: [],
+    skills: ["Systems", "Networking"],
+  },
 ];
 
 export const certificationsData: Certification[] = [

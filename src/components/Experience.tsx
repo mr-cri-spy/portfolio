@@ -49,6 +49,7 @@ export default function Experience() {
                   </div>
                 </div>
 
+                {exp.description.length > 0 && (
                 <ul className="space-y-2.5 pt-1">
                   {exp.description.map((bullet, bIdx) => (
                     <li key={bIdx} className="flex items-start gap-2.5 text-sm text-[#55534D] leading-relaxed">
@@ -57,6 +58,7 @@ export default function Experience() {
                     </li>
                   ))}
                 </ul>
+                )}
 
                 <div className="flex flex-wrap gap-1.5 pt-1">
                   {exp.skills.map((skill) => (

@@ -11,10 +11,10 @@ interface Message {
 }
 
 const STARTER_PROMPTS = [
-  "What does Kiran do?",
-  "What are his top skills?",
+  "What has Kiran built?",
+  "Tell me about Blue Bright HR",
+  "Is he open to relocation?",
   "Is he available for a call next week?",
-  "What has he built?",
 ];
 
 const STORAGE_KEY = "askbot-live-transcript-v1";

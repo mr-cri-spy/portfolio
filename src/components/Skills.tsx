@@ -14,7 +14,7 @@ export default function Skills() {
             The toolkit.
           </h2>
           <p className="text-[#55534D] text-lg mt-4 leading-relaxed">
-            A working set of languages, frameworks, and platforms I use to take AI systems from notebook to production.
+            The working set I use to ship AI products end to end, from the database schema to the interface.
           </p>
         </div>
 

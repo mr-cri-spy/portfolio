@@ -6,8 +6,13 @@ export interface Project {
   technologies: string[];
   githubUrl?: string;
   demoUrl?: string;
+  /** Button label for demoUrl, e.g. "Live app" or "Staging app". */
+  demoLabel?: string;
+  /** Shown instead of a GitHub button when the code is private. */
+  repoNote?: string;
   features: string[];
-  imageUrl: string;
+  /** Local image key (src/assets/images/<key>.webp) or absolute URL. Optional when coverFlow is set. */
+  imageUrl?: string;
   category: string;
   status?: "ongoing";
   // Flagship-project extras: a featured project spans the full grid width,
@@ -16,8 +21,16 @@ export interface Project {
   featured?: boolean;
   badge?: string;
   coverAlt?: string;
+  /** Drawn cover (a product's core flow) used instead of an image. */
+  coverFlow?: CoverFlow;
   metrics?: string[];
   caseStudy?: CaseStudy;
+}
+
+export interface CoverFlow {
+  caption: string;
+  steps: { label: string; tag?: string }[];
+  footer?: string;
 }
 
 export interface SpecItem {
@@ -35,7 +48,9 @@ export interface RoadmapStep {
   state: "done" | "active" | "upcoming";
 }
 
-export interface CaseStudy {
+/** Case study for a model / research project (SHNU-LLM). */
+export interface ModelCaseStudy {
+  kind: "model";
   eyebrow: string;
   title: string;
   subtitle: string;
@@ -49,6 +64,23 @@ export interface CaseStudy {
   roadmap: RoadmapStep[];
   status: string;
 }
+
+/** Case study for a shipped product (Blue Bright HR, Lenj). */
+export interface ProductCaseStudy {
+  kind: "product";
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  role: string;
+  why: string;
+  stats: StatItem[];
+  flow: { label: string; detail: string; tag?: string }[];
+  stack: SpecItem[];
+  decisions: { title: string; body: string }[];
+  status: { built: string[]; next: string[] };
+}
+
+export type CaseStudy = ModelCaseStudy | ProductCaseStudy;
 
 export interface SkillGroup {
   name: string;
@@ -75,6 +107,8 @@ export interface Profile {
   resumeUrl: string;
   bio: string;
   location: string;
+  /** One line on availability and relocation, used by the hero and the chat assistant. */
+  availability: string;
   phone?: string;
 }
 
