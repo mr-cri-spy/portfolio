@@ -78,6 +78,8 @@ export interface ProductCaseStudy {
   stack: SpecItem[];
   decisions: { title: string; body: string }[];
   status: { built: string[]; next: string[] };
+  /** Real screenshots: key of src/assets/images/screen-<key>.webp. */
+  screens?: { key: string; alt: string; caption: string }[];
 }
 
 export type CaseStudy = ModelCaseStudy | ProductCaseStudy;
@@ -103,6 +105,7 @@ export interface Education {
   degree: string;
   institution: string;
   period: string;
+  details?: string;
 }
 
 export interface Profile {

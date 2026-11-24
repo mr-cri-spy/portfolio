@@ -4,6 +4,15 @@ import Section from "./Section";
 import SpecGrid from "./SpecGrid";
 import StatTile from "./StatTile";
 
+const screenImages = import.meta.glob("../../assets/images/screen-*.webp", { eager: true, import: "default" }) as Record<
+  string,
+  string
+>;
+
+function screenSrc(key: string): string | undefined {
+  return Object.entries(screenImages).find(([path]) => path.endsWith(`/screen-${key}.webp`))?.[1];
+}
+
 const tagTone: Record<string, string> = {
   AI: "bg-[#F3E3D9] text-[#A84C2C]",
   Human: "bg-[#EEF3EA] text-[#56634B]",
@@ -18,6 +27,21 @@ export default function ProductCaseStudyBody({ cs }: { cs: ProductCaseStudy }) {
           <StatTile key={stat.label} {...stat} />
         ))}
       </div>
+
+      {cs.screens?.map((shot) => {
+        const src = screenSrc(shot.key);
+        return src ? (
+          <figure key={shot.key} className="space-y-2">
+            <img
+              src={src}
+              alt={shot.alt}
+              loading="lazy"
+              className="w-full rounded-2xl border border-[#E6E2D8] shadow-sm bg-[#0b0b17]"
+            />
+            <figcaption className="text-xs text-[#83807A]">{shot.caption}</figcaption>
+          </figure>
+        ) : null;
+      })}
 
       <Section id="cs-why" title="Why it exists">
         <p className="text-[#55534D] leading-relaxed max-w-3xl">{cs.why}</p>

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Github, ExternalLink, X, Check, Briefcase, Bot, Code2, Sparkles, ArrowUpRight } from "lucide-react";
+import { Github, ExternalLink, X, Check, Briefcase, Bot, Code2, Globe, Sparkles, ArrowUpRight } from "lucide-react";
 import { projectsData } from "../data";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import { useModalA11y } from "../hooks/useModalA11y";
@@ -24,6 +24,7 @@ const otherProjects = projectsData.filter((p) => !(p.featured && p.caseStudy));
 
 const categoryIcon: Record<string, typeof Briefcase> = {
   "Client work": Briefcase,
+  Freelance: Globe,
   "Agents · R&D": Bot,
   "Open source": Code2,
 };
@@ -32,7 +33,12 @@ function caseStudyFromHash(): Project | null {
   if (typeof window === "undefined") return null;
   const { hash } = window.location;
   if (!hash.startsWith(CASE_STUDY_HASH)) return null;
-  const id = decodeURIComponent(hash.slice(CASE_STUDY_HASH.length));
+  let id: string;
+  try {
+    id = decodeURIComponent(hash.slice(CASE_STUDY_HASH.length));
+  } catch {
+    return null; // malformed escape such as "#work/%": ignore rather than crash the page
+  }
   return projectsData.find((p) => p.id === id && p.caseStudy) ?? null;
 }
 
@@ -103,7 +109,7 @@ export default function Projects() {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-[#262624] mt-16 mb-5 pb-2 border-b border-[#E6E2D8]">
               More work
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {otherProjects.map((project, i) => {
                 const Icon = categoryIcon[project.category] ?? Sparkles;
                 return (
@@ -154,7 +160,7 @@ export default function Projects() {
       <AnimatePresence>
         {caseStudyProject && (
           <CaseStudy
-            key={caseStudyProject.id}
+            key="case-study"
             project={caseStudyProject}
             coverSrc={resolveProjectImage(caseStudyProject.imageUrl)}
             onClose={closeCaseStudy}

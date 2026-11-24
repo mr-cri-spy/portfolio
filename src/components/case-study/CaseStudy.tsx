@@ -19,6 +19,11 @@ export default function CaseStudy({ project, coverSrc, onClose }: CaseStudyProps
   const reduceMotion = useReducedMotion();
   useModalA11y(true, dialogRef, onClose);
 
+  // The dialog instance is reused when the hash switches case studies; start each one at the top.
+  useEffect(() => {
+    dialogRef.current?.scrollTo({ top: 0 });
+  }, [project.id]);
+
   // No router on this site, so the case study gets its own tab title while open.
   useEffect(() => {
     const previousTitle = document.title;

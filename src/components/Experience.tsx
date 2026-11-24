@@ -104,6 +104,7 @@ export default function Experience() {
                   <span className="text-sm font-semibold text-[#262624]">{edu.degree}</span>
                   <span className="text-sm text-[#55534D]">{edu.institution}</span>
                   <span className="text-xs font-mono text-[#83807A] mt-1">{edu.period}</span>
+                  {edu.details && <span className="text-xs text-[#55534D] mt-2 leading-relaxed">{edu.details}</span>}
                 </span>
               </li>
             ))}

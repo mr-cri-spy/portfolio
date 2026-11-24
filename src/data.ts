@@ -85,8 +85,6 @@ export const projectsData: Project[] = [
     longDescription:
       "A multi-tenant hiring platform built end to end in Next.js, TypeScript and Postgres, with LLM features for job descriptions, interviews and evaluation.",
     technologies: ["Next.js 16", "React 19", "TypeScript", "Supabase Postgres", "Groq · Llama 3.3 70B", "Razorpay & Stripe", "Vercel"],
-    demoUrl: "https://blue-bright-hr.vercel.app",
-    demoLabel: "Live app",
     repoNote: "Private repo · happy to walk through the code",
     features: [],
     category: "B2B SaaS · LLM features",
@@ -280,6 +278,13 @@ export const projectsData: Project[] = [
         ],
         next: ["Production launch", "In-app recording and editing for challenge videos"],
       },
+      screens: [
+        {
+          key: "lenj-home",
+          alt: "Lenj home screen: a greeting, a day-streak counter, buttons to create or join a challenge, and starter challenges for fitness, reading and coding",
+          caption: "Lenj home screen on the staging app (dark theme).",
+        },
+      ],
     },
   },
   {
@@ -490,6 +495,22 @@ export const projectsData: Project[] = [
     category: "Client work",
   },
   {
+    id: "freelance-sites",
+    title: "Client Websites & Apps",
+    description:
+      "30+ websites and web apps for small businesses since 2023, including Taksha Studios and Sai Vihaar Inn & Suites. Recent work: a handmade-gifts store with WhatsApp checkout and a Firebase admin panel.",
+    longDescription:
+      "Freelance work alongside my MCA: business websites and small web apps, each built end to end from requirements to launch.",
+    technologies: ["HTML/CSS/JavaScript", "Firebase", "WhatsApp checkout", "Accessibility (WCAG AA)"],
+    features: [
+      "30+ websites and web apps for small businesses and end users, including Taksha Studios and Sai Vihaar Inn & Suites",
+      "A handmade-gifts e-commerce site: cart, wishlist, product lightbox and WhatsApp checkout that formats itemised orders",
+      "Firebase admin panel for that store: email login, product management and image upload",
+      "Colours checked against WCAG AA, with automated smoke tests for cart, wishlist, search and mobile navigation",
+    ],
+    category: "Freelance",
+  },
+  {
     id: "agentic-ai-systems",
     title: "Multi-Agent Experiments",
     description:
@@ -588,6 +609,7 @@ export const educationData: Education[] = [
     degree: "Master of Computer Applications (MCA)",
     institution: "Mangalore University",
     period: "2023 – 2025",
+    details: "Alongside the degree: freelance web work, then AI products at Mashnu AI. Academic projects included Android apps in Kotlin and Jetpack Compose (MVVM, Room).",
   },
   {
     id: "bca",
