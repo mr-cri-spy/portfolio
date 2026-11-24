@@ -1,7 +1,7 @@
 import { useState, FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { developerProfile } from "../data";
-import { Mail, Github, Linkedin, Send, Check, Copy, AlertCircle } from "lucide-react";
+import { Mail, Github, Linkedin, Send, Check, Copy, AlertCircle, AtSign, PenLine } from "lucide-react";
 import { showToast } from "../utils/toast";
 import { isValidEmail } from "../utils/validation";
 import { apiUrl } from "../utils/api";
@@ -110,7 +110,7 @@ export default function Contact() {
 
             <div className="space-y-4 pt-4 border-t border-[#E6E2D8]">
               <h4 className="text-xs uppercase tracking-wider font-semibold text-[#83807A]">Connect elsewhere</h4>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <a
                   href={developerProfile.github}
                   target="_blank"
@@ -129,6 +129,28 @@ export default function Contact() {
                   <Linkedin className="w-4 h-4" />
                   <span>LinkedIn</span>
                 </a>
+                {developerProfile.medium && (
+                  <a
+                    href={developerProfile.medium}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F4F1EA] border border-[#E6E2D8] text-[#55534D] hover:text-[#262624] hover:border-[#E6E2D8] transition-colors duration-200 text-sm font-medium"
+                  >
+                    <PenLine className="w-4 h-4" />
+                    <span>Medium</span>
+                  </a>
+                )}
+                {developerProfile.x && (
+                  <a
+                    href={developerProfile.x}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F4F1EA] border border-[#E6E2D8] text-[#55534D] hover:text-[#262624] hover:border-[#E6E2D8] transition-colors duration-200 text-sm font-medium"
+                  >
+                    <AtSign className="w-4 h-4" />
+                    <span>X</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>

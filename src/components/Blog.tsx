@@ -80,6 +80,14 @@ export default function Blog() {
           <div className="max-w-xl">
             <span className="text-xs uppercase tracking-[0.2em] text-[#C15F3C] font-semibold">Writing</span>
             <h2 className="text-4xl sm:text-5xl font-serif tracking-tight text-[#262624] mt-3">Notes.</h2>
+            <a
+              href="https://medium.com/@Kiran_crispy_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-3 text-sm font-medium text-[#C15F3C] hover:underline"
+            >
+              More of my writing on Medium →
+            </a>
           </div>
 
           <div className="relative w-full md:w-64">

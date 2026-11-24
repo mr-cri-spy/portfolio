@@ -26,6 +26,8 @@ import {
   Award,
   Check,
   Home,
+  AtSign,
+  PenLine,
 } from "lucide-react";
 
 export default function App() {
@@ -274,6 +276,30 @@ export default function App() {
             >
               <Linkedin className="w-4 h-4" />
             </a>
+            {developerProfile.medium && (
+              <a
+                href={developerProfile.medium}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-[#E6E2D8] bg-white flex items-center justify-center text-[#55534D] hover:text-[#C15F3C] hover:border-[#C15F3C]/40 transition-colors duration-200"
+                title="Medium"
+                aria-label="Medium"
+              >
+                <PenLine className="w-4 h-4" />
+              </a>
+            )}
+            {developerProfile.x && (
+              <a
+                href={developerProfile.x}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-[#E6E2D8] bg-white flex items-center justify-center text-[#55534D] hover:text-[#C15F3C] hover:border-[#C15F3C]/40 transition-colors duration-200"
+                title="X (Twitter)"
+                aria-label="X (Twitter)"
+              >
+                <AtSign className="w-4 h-4" />
+              </a>
+            )}
             <a
               href={`mailto:${developerProfile.email}`}
               className="w-10 h-10 rounded-full border border-[#E6E2D8] bg-white flex items-center justify-center text-[#55534D] hover:text-[#C15F3C] hover:border-[#C15F3C]/40 transition-colors duration-200"

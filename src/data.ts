@@ -6,7 +6,9 @@ export const developerProfile: Profile = {
   subTitle: "TypeScript · React · Python · LLM agents",
   email: "kiraj8899@gmail.com",
   github: "https://github.com/mr-cri-spy",
-  linkedin: "https://linkedin.com/in/kiran-m-36334b343",
+  linkedin: "https://www.linkedin.com/in/kiran-m-36334b343/",
+  x: "https://x.com/kiran_crispy",
+  medium: "https://medium.com/@Kiran_crispy_",
   resumeUrl: "#",
   bio: "Product-minded full-stack engineer. Since 2023 I've built software for real users: 30+ websites and apps as a freelancer during my MCA, AI products and agents as a product and AI engineer at Mashnu AI, and forward-deployed AI work with client teams at Naaz AI Labs. I build end to end (data model, API, React interface and the AI features in between), as in Blue Bright HR (multi-tenant AI hiring), Flybird (AI social media management) and Lenj (a challenge platform with privacy enforced in Postgres and 300+ automated tests). To understand the layer underneath, I also pretrained a small language model from scratch. Available to start immediately and open to relocating to the UK.",
   location: "Mysore, India",
@@ -565,7 +567,7 @@ export const experienceData: Experience[] = [
   {
     id: "mashnu",
     role: "Product Engineer & AI Engineer",
-    company: "Mashnu AI",
+    company: "Mashnu AI · part-time alongside my MCA from January 2025, full-time from July 2025",
     location: "Bengaluru · Remote",
     period: "January 2025 – December 2025",
     description: [
