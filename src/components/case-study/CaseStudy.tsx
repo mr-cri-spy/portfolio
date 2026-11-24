@@ -22,7 +22,7 @@ export default function CaseStudy({ project, coverSrc, onClose }: CaseStudyProps
   // No router on this site, so the case study gets its own tab title while open.
   useEffect(() => {
     const previousTitle = document.title;
-    document.title = `${cs.title} — Case Study | ${developerProfile.name}`;
+    document.title = `${cs.title} · Case Study | ${developerProfile.name}`;
     return () => {
       document.title = previousTitle;
     };

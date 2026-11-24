@@ -79,7 +79,7 @@ export const skillGroups: SkillGroup[] = [
 export const projectsData: Project[] = [
   {
     id: "blue-bright-hr",
-    title: "Blue Bright HR — AI Hiring Platform",
+    title: "Blue Bright HR: AI Hiring Platform",
     description:
       "A multi-tenant B2B SaaS where AI drafts the job post, runs the first-round interview and scores the transcript, and a recruiter makes every decision.",
     longDescription:
@@ -190,7 +190,7 @@ export const projectsData: Project[] = [
   },
   {
     id: "lenj",
-    title: "Lenj — Social Challenge Platform",
+    title: "Lenj: Social Challenge Platform",
     description:
       "Set a measurable goal, post progress, submit evidence a human reviewer checks, and earn a trophy marked verified or self-reported. Privacy is enforced in Postgres, and every push runs 300+ automated tests in CI.",
     longDescription:
@@ -284,7 +284,7 @@ export const projectsData: Project[] = [
   },
   {
     id: "flybird",
-    title: "Flybird — AI Social Media Management SaaS",
+    title: "Flybird: AI Social Media Management SaaS",
     description:
       "An AI-native workspace for small businesses and agencies: plan a campaign, generate on-brand posts for Instagram, Facebook and LinkedIn, approve, schedule and measure. AI drafts never publish without a person's approval.",
     longDescription:
@@ -384,7 +384,7 @@ export const projectsData: Project[] = [
   },
   {
     id: "shnu-llm",
-    title: "SHNU-LLM — A Language Model Built From Scratch",
+    title: "SHNU-LLM: A Language Model Built From Scratch",
     description:
       "A 33.9M-parameter decoder-only Transformer trained from random initialization: custom tokenizer, reproducible multi-session training on free GPUs, and a measured evaluation pipeline.",
     longDescription: "Building a language model from scratch, not fine-tuning a pretrained one.",
@@ -601,7 +601,7 @@ export const certificationsData: Certification[] = [
   {
     id: "cert-ollama-local-llm",
     title: "Zero to Hero in Ollama: Create Local LLM Applications",
-    issuer: "Udemy — Start-Tech Academy",
+    issuer: "Udemy · Start-Tech Academy",
     date: "Sep 29, 2025",
     credentialId: "UC-237c4ce1-df2a-43a1-a7b3-9986daeaf1f6",
     skills: ["Ollama", "Local LLMs", "LLM Applications"],
@@ -623,7 +623,7 @@ export const certificationsData: Certification[] = [
   {
     id: "cert-deploying-llms-llmops",
     title: "Deploying LLMs: A Practical Guide to LLMOps in Production",
-    issuer: "Udemy — The Fuzzy Scientist",
+    issuer: "Udemy · The Fuzzy Scientist",
     date: "Sep 10, 2025",
     credentialId: "UC-c320fab8-182f-47b0-b23a-c894d685016c",
     skills: ["LLMOps", "Model Deployment", "Production AI"],
@@ -634,7 +634,7 @@ export const certificationsData: Certification[] = [
   {
     id: "cert-math-datascience-genai",
     title: "Mathematics — Basics to Advanced for Data Science and GenAI",
-    issuer: "Udemy — Krish Naik",
+    issuer: "Udemy · Krish Naik",
     date: "Nov 30, 2025",
     credentialId: "UC-2c8968f0-d6a2-4355-9616-c62ece1869e6",
     skills: ["Mathematics for ML", "Data Science", "Generative AI Foundations"],
@@ -678,7 +678,7 @@ export const certificationsData: Certification[] = [
   {
     id: "cert-llms-mastery-transformers",
     title: "LLMs Mastery: Complete Guide to Transformers & Generative AI",
-    issuer: "Udemy — The Fuzzy Scientist",
+    issuer: "Udemy · The Fuzzy Scientist",
     date: "Aug 29, 2025",
     credentialId: "UC-f1956ff8-c7f2-44e6-a75c-4a74f690ee6d",
     skills: ["Large Language Models", "Transformers", "Generative AI"],
@@ -689,7 +689,7 @@ export const certificationsData: Certification[] = [
   {
     id: "cert-intro-llms",
     title: "Intro to Large Language Models (LLMs)",
-    issuer: "Udemy — 365 Careers",
+    issuer: "Udemy · 365 Careers",
     date: "Jul 28, 2025",
     credentialId: "UC-7b93b3f3-ea35-4075-8af2-9a5c7f82dae3",
     skills: ["Large Language Models", "AI Fundamentals"],
@@ -711,7 +711,7 @@ export const certificationsData: Certification[] = [
   {
     id: "cert-ethical-hacking",
     title: "Complete Guide to Ethical Hacking",
-    issuer: "Udemy — Stone River eLearning",
+    issuer: "Udemy · Stone River eLearning",
     date: "Feb 29, 2024",
     credentialId: "UC-8ace841d-9913-4781-a05e-6d274f65ad4b",
     skills: ["Ethical Hacking", "Security Fundamentals"],
@@ -733,7 +733,7 @@ export const certificationsData: Certification[] = [
   {
     id: "cert-linux-command-line",
     title: "The Linux Command Line Bootcamp: Beginner To Power User",
-    issuer: "Udemy — Colt Steele",
+    issuer: "Udemy · Colt Steele",
     date: "May 17, 2023",
     credentialId: "UC-8e5155d0-43e9-466e-8839-b721ada06345",
     skills: ["Linux", "Command Line", "Bash"],

@@ -5,9 +5,9 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 const steps = [
   {
     num: "01",
-    title: "Start from the workflow",
-    description: "Sit with the people doing the job, map the steps and the edge cases, and agree what done looks like before writing code.",
-    output: "Problem + success criteria",
+    title: "Discover before building",
+    description: "Talk to the people doing the job, map the workflow and its edge cases, and test the riskiest assumptions with a quick prototype before writing production code.",
+    output: "Problem, success metric, prototype",
     icon: Users,
   },
   {
@@ -20,7 +20,7 @@ const steps = [
   {
     num: "03",
     title: "Ship a thin slice",
-    description: "One path working end to end (database, API, React UI, deployed), then widen it. Tests and CI from the first week.",
+    description: "One path working end to end (database, API, React UI, deployed), then widen it. Tests and CI from the first week, and a check that it moved the outcome we agreed on.",
     output: "Deployed vertical slice",
     icon: Rocket,
   },
@@ -44,6 +44,11 @@ export default function OperatingLoop() {
           <h2 className="text-4xl sm:text-5xl font-serif tracking-tight text-[#262624] mt-3">
             How I work.
           </h2>
+          <p className="text-[#55534D] text-lg mt-4 leading-relaxed">
+            Shaped by Marty Cagan's <em>Inspired</em>: discover before you build, take on the biggest risks first (will
+            people use it, can they use it, can we build it, does it work for the business), and judge the work by
+            outcomes, not output.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
