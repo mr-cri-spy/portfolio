@@ -23,7 +23,7 @@ const RECENT_BUILDS = [
 
 const headlineContainer = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.06, delayChildren: 0.02 } },
 };
 
 const headlineLine = {
@@ -82,16 +82,6 @@ export default function Hero({ onNavigate }: HeroProps) {
       >
         {/* Left column - text */}
         <div className="lg:col-span-7 min-w-0 flex flex-col items-start space-y-7 text-left w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#E6E2D8] text-[#55534D] text-xs font-medium"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#6B7A5E]" />
-            <span>{developerProfile.availability}</span>
-          </motion.div>
-
           <motion.h1
             variants={headlineContainer}
             initial="hidden"
@@ -113,7 +103,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.55 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
             className="text-[#55534D] text-lg max-w-xl leading-relaxed"
           >
             I'm <span className="text-[#262624] font-medium">{developerProfile.name}</span>, a full-stack AI product
@@ -124,7 +114,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.65 }}
+            transition={{ duration: 0.4, delay: 0.25 }}
             className="flex flex-wrap gap-2 pt-1"
           >
             {tags.map((tag) => (
@@ -140,7 +130,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.75 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
             className="flex flex-wrap gap-4 pt-3"
           >
             <button
@@ -162,7 +152,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             aria-label="Recent builds"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.85 }}
+            transition={{ duration: 0.4, delay: 0.35 }}
             className="w-full max-w-xl"
           >
             <p className="text-[11px] uppercase tracking-[0.2em] text-[#83807A] font-semibold mb-3">Recent builds</p>
@@ -190,7 +180,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.95 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
             className="flex items-center gap-2 text-sm text-[#83807A]"
           >
             <MapPin className="w-4 h-4" />
@@ -202,7 +192,7 @@ export default function Hero({ onNavigate }: HeroProps) {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
+          transition={{ duration: 0.5, delay: 0.05 }}
           className="lg:col-span-5 flex justify-center lg:justify-end"
           style={{ perspective: 1200 }}
         >
@@ -235,6 +225,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                     className="w-full h-full object-cover object-top"
                     width={340}
                     height={425}
+                    fetchPriority="high"
                   />
                 </picture>
 

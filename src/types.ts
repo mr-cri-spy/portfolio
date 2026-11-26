@@ -23,6 +23,12 @@ export interface Project {
   coverAlt?: string;
   /** Drawn cover (a product's core flow) used instead of an image. */
   coverFlow?: CoverFlow;
+  /** Real screenshot used as the cover: key of src/assets/images/screen-<key>.webp. */
+  coverScreen?: string;
+  /** Short label shown on a screenshot cover, e.g. "Staging app". */
+  coverLabel?: string;
+  /** Drawn header for compact cards that have no screenshot. */
+  cardArt?: "chat" | "browsers" | "graph";
   metrics?: string[];
   caseStudy?: CaseStudy;
 }
@@ -120,7 +126,7 @@ export interface Profile {
   resumeUrl: string;
   bio: string;
   location: string;
-  /** One line on availability and relocation, used by the hero and the chat assistant. */
+  /** Location and relocation facts for the chat assistant, which mentions them only when a visitor asks. */
   availability: string;
   phone?: string;
 }

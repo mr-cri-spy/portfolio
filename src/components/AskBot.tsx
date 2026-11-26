@@ -13,7 +13,7 @@ interface Message {
 const STARTER_PROMPTS = [
   "What has Kiran built?",
   "Tell me about Blue Bright HR",
-  "Is he open to relocation?",
+  "How does he work with customers?",
   "Is he available for a call next week?",
 ];
 

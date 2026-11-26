@@ -6,13 +6,14 @@ import FlowCover from "./FlowCover";
 interface FeaturedProjectCardProps {
   project: Project;
   coverSrc?: string;
+  screenSrc?: string;
   isVisible: boolean;
   index: number;
   onOpenCaseStudy: () => void;
 }
 
 /** Full-width flagship card: cover on the left, summary, metrics and actions on the right. */
-export default function FeaturedProjectCard({ project, coverSrc, isVisible, index, onOpenCaseStudy }: FeaturedProjectCardProps) {
+export default function FeaturedProjectCard({ project, coverSrc, screenSrc, isVisible, index, onOpenCaseStudy }: FeaturedProjectCardProps) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
@@ -22,12 +23,31 @@ export default function FeaturedProjectCard({ project, coverSrc, isVisible, inde
       className="md:col-span-2 rounded-2xl overflow-hidden bg-white gold-accent-border grid grid-cols-1 lg:grid-cols-2"
     >
       <div className="relative bg-[#0b1530]">
-        {project.coverFlow ? (
+        {screenSrc ? (
+          <div className="relative h-full min-h-[260px] overflow-hidden bg-[#0b0b17]">
+            <img
+              src={screenSrc}
+              alt={`${project.title}: screenshot`}
+              loading="lazy"
+              decoding="async"
+              width={1200}
+              height={840}
+              className="absolute inset-0 w-full h-full object-cover object-left-top"
+            />
+            {project.coverLabel && (
+              <span className="absolute left-3 bottom-3 px-2.5 py-1 rounded-full bg-black/65 text-white text-[10px] font-semibold uppercase tracking-wide backdrop-blur-sm">
+                {project.coverLabel}
+              </span>
+            )}
+          </div>
+        ) : project.coverFlow ? (
           <FlowCover flow={project.coverFlow} />
         ) : (
           <img
             src={coverSrc}
             alt={project.coverAlt ?? project.title}
+            loading="lazy"
+            decoding="async"
             width={1200}
             height={600}
             className="w-full h-full aspect-[2/1] lg:aspect-auto object-cover"

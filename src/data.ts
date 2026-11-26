@@ -1,7 +1,7 @@
 import type { Profile, Project, SkillGroup, Experience, Education, Certification } from "./types.js";
 
 export const developerProfile: Profile = {
-  name: "Kiran M B",
+  name: "Kirana M B",
   title: "Full-Stack AI Product Engineer",
   subTitle: "TypeScript · React · Python · LLM agents",
   email: "kiraj8899@gmail.com",
@@ -10,9 +10,9 @@ export const developerProfile: Profile = {
   x: "https://x.com/kiran_crispy",
   medium: "https://medium.com/@Kiran_crispy_",
   resumeUrl: "#",
-  bio: "Product-minded full-stack engineer. Since 2023 I've built software for real users: 30+ websites and apps as a freelancer during my MCA, AI products and agents as a product and AI engineer at Mashnu AI, and forward-deployed AI work with client teams at Naaz AI Labs. I build end to end (data model, API, React interface and the AI features in between), as in Blue Bright HR (multi-tenant AI hiring), Flybird (AI social media management) and Lenj (a challenge platform with privacy enforced in Postgres and 300+ automated tests). To understand the layer underneath, I also pretrained a small language model from scratch. Available to start immediately and open to relocating to the UK.",
-  location: "Mysore, India",
-  availability: "Available now · open to relocating to the UK",
+  bio: "Product-minded full-stack engineer. Since 2023 I've built software for real users: 30+ websites and apps as a freelancer during my MCA, AI products and agents as a product and AI engineer at Mashnu AI, and forward-deployed AI work with client teams at Naaz AI Labs. I build end to end (data model, API, React interface and the AI features in between), as in Blue Bright HR (multi-tenant AI hiring), Flybird (AI social media management) and Lenj (a challenge platform with privacy enforced in Postgres and 300+ automated tests). To understand the layer underneath, I also pretrained a small language model from scratch.",
+  location: "Bengaluru, India",
+  availability: "Based in Bengaluru, India. Open to relocating for the right role, including to the UK.",
 };
 
 export const skillGroups: SkillGroup[] = [
@@ -92,6 +92,8 @@ export const projectsData: Project[] = [
     category: "B2B SaaS · LLM features",
     featured: true,
     badge: "End-to-end build",
+    coverScreen: "bbhr-landing",
+    coverLabel: "Landing page with the live sandbox demo",
     coverFlow: {
       caption: "Hiring pipeline",
       steps: [
@@ -186,6 +188,13 @@ export const projectsData: Project[] = [
           "Wire CV-to-job matching into the recruiter UI",
         ],
       },
+      screens: [
+        {
+          key: "bbhr-landing",
+          alt: "Blue Bright HR landing page: headline 'The AI-Powered Virtual HR Operating System' above a live sandbox that scores a sample candidate",
+          caption: "Landing page with the live sandbox: pick a role and the AI match report renders for a sample candidate.",
+        },
+      ],
     },
   },
   {
@@ -203,6 +212,8 @@ export const projectsData: Project[] = [
     category: "Consumer web app",
     featured: true,
     badge: "In staging",
+    coverScreen: "lenj-home",
+    coverLabel: "Staging app",
     coverFlow: {
       caption: "Challenge loop",
       steps: [
@@ -495,6 +506,7 @@ export const projectsData: Project[] = [
       "Worked with client stakeholders from discovery to delivery and iterated on their feedback",
     ],
     category: "Client work",
+    cardArt: "chat",
   },
   {
     id: "freelance-sites",
@@ -511,6 +523,7 @@ export const projectsData: Project[] = [
       "Colours checked against WCAG AA, with automated smoke tests for cart, wishlist, search and mobile navigation",
     ],
     category: "Freelance",
+    cardArt: "browsers",
   },
   {
     id: "agentic-ai-systems",
@@ -529,6 +542,7 @@ export const projectsData: Project[] = [
       "LangSmith tracing to debug and evaluate agent runs",
     ],
     category: "Agents · R&D",
+    cardArt: "graph",
   },
   {
     id: "portfolio-assistant",
@@ -546,6 +560,7 @@ export const projectsData: Project[] = [
       "Self-hostable Express server with Helmet and rate limiting",
     ],
     category: "Open source",
+    coverScreen: "portfolio-hero",
   },
 ];
 
@@ -612,14 +627,14 @@ export const educationData: Education[] = [
     id: "mca",
     degree: "Master of Computer Applications (MCA)",
     institution: "Mangalore University",
-    period: "2023 – 2025",
+    period: "2025",
     details: "Alongside the degree: freelance web work, then AI products at Mashnu AI. Academic projects included Android apps in Kotlin and Jetpack Compose (MVVM, Room).",
   },
   {
     id: "bca",
     degree: "Bachelor of Computer Applications (BCA)",
     institution: "BGS First Grade College, University of Mysore",
-    period: "2019 – 2022",
+    period: "2022",
   },
 ];
 
