@@ -126,7 +126,7 @@ export interface Profile {
   resumeUrl: string;
   bio: string;
   location: string;
-  /** One line on availability and relocation, used by the hero and the chat assistant. */
+  /** Location and relocation facts for the chat assistant, which mentions them only when a visitor asks. */
   availability: string;
   phone?: string;
 }

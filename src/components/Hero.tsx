@@ -82,16 +82,6 @@ export default function Hero({ onNavigate }: HeroProps) {
       >
         {/* Left column - text */}
         <div className="lg:col-span-7 min-w-0 flex flex-col items-start space-y-7 text-left w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#E6E2D8] text-[#55534D] text-xs font-medium"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#6B7A5E]" />
-            <span>{developerProfile.availability}</span>
-          </motion.div>
-
           <motion.h1
             variants={headlineContainer}
             initial="hidden"

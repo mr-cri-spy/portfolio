@@ -1,7 +1,7 @@
 import type { Profile, Project, SkillGroup, Experience, Education, Certification } from "./types.js";
 
 export const developerProfile: Profile = {
-  name: "Kiran M B",
+  name: "Kirana M B",
   title: "Full-Stack AI Product Engineer",
   subTitle: "TypeScript · React · Python · LLM agents",
   email: "kiraj8899@gmail.com",
@@ -10,9 +10,9 @@ export const developerProfile: Profile = {
   x: "https://x.com/kiran_crispy",
   medium: "https://medium.com/@Kiran_crispy_",
   resumeUrl: "#",
-  bio: "Product-minded full-stack engineer. Since 2023 I've built software for real users: 30+ websites and apps as a freelancer during my MCA, AI products and agents as a product and AI engineer at Mashnu AI, and forward-deployed AI work with client teams at Naaz AI Labs. I build end to end (data model, API, React interface and the AI features in between), as in Blue Bright HR (multi-tenant AI hiring), Flybird (AI social media management) and Lenj (a challenge platform with privacy enforced in Postgres and 300+ automated tests). To understand the layer underneath, I also pretrained a small language model from scratch. Available to start immediately and open to relocating to the UK.",
-  location: "Mysore, India",
-  availability: "Available now · open to relocating to the UK",
+  bio: "Product-minded full-stack engineer. Since 2023 I've built software for real users: 30+ websites and apps as a freelancer during my MCA, AI products and agents as a product and AI engineer at Mashnu AI, and forward-deployed AI work with client teams at Naaz AI Labs. I build end to end (data model, API, React interface and the AI features in between), as in Blue Bright HR (multi-tenant AI hiring), Flybird (AI social media management) and Lenj (a challenge platform with privacy enforced in Postgres and 300+ automated tests). To understand the layer underneath, I also pretrained a small language model from scratch.",
+  location: "Bengaluru, India",
+  availability: "Based in Bengaluru, India. Open to relocating for the right role, including to the UK.",
 };
 
 export const skillGroups: SkillGroup[] = [
@@ -627,14 +627,14 @@ export const educationData: Education[] = [
     id: "mca",
     degree: "Master of Computer Applications (MCA)",
     institution: "Mangalore University",
-    period: "2023 – 2025",
+    period: "2025",
     details: "Alongside the degree: freelance web work, then AI products at Mashnu AI. Academic projects included Android apps in Kotlin and Jetpack Compose (MVVM, Room).",
   },
   {
     id: "bca",
     degree: "Bachelor of Computer Applications (BCA)",
     institution: "BGS First Grade College, University of Mysore",
-    period: "2019 – 2022",
+    period: "2022",
   },
 ];
 
